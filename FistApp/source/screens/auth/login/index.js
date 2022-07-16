@@ -42,7 +42,7 @@ export default class LoginScreen extends Component{
               </View>
               {/* Button */}
               <View style = {styles.buttonContainer}>
-                <TouchableOpacity onPress={() => this.setState({label: 'login',underlineLeft: scale(40), })} style = {styles.button}>
+                <TouchableOpacity onPress={() => this.setState({label: 'login',underlineLeft: scale(40)})} style = {styles.button}>
                   <Text style={styles.buttonText}>{'Login'}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity onPress={() => this.setState({label: 'SignUp',underlineLeft: scale(260)})} style = {styles.button}>
