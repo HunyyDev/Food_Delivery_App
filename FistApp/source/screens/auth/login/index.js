@@ -19,7 +19,7 @@ export default class LoginScreen extends Component{
         super(props);
         this.state= {
           label: 'login',
-          underlineLeft:scale(50),
+          underlineLeft:scale(40),
         };
     }
 
@@ -35,7 +35,6 @@ export default class LoginScreen extends Component{
             }}>
 
             <View style = {styles.upper}>
-              <View/>
               {/*Logo*/}
               <View style ={styles.logoContainer}>
                 <Image source = {IMG_bella} style = {styles.logo}/>
@@ -43,15 +42,16 @@ export default class LoginScreen extends Component{
               </View>
               {/* Button */}
               <View style = {styles.buttonContainer}>
-                <TouchableOpacity onPress={() => this.setState({label: 'login',underlineLeft: scale(50)})} style = {styles.button}>
-                  <Text style={styles.buttonText}>{'login'}</Text>
+                <TouchableOpacity onPress={() => this.setState({label: 'login',underlineLeft: scale(40)})} style = {styles.button}>
+                  <Text style={styles.buttonText}>{'Login'}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.setState({label: 'SignUp',underlineLeft: scale(262)})} style = {styles.button}>
+                <TouchableOpacity onPress={() => this.setState({label: 'SignUp',underlineLeft: scale(260)})} style = {styles.button}>
                   <Text style={styles.buttonText}>{'Sign-up'}</Text>
                 </TouchableOpacity>
               </View>
+              {/* Line */}
+              <View style={[styles.underline,{marginLeft: this.state.underlineLeft}]}/>
             </View>
-            <View style={[styles.underline,{marginLeft: this.state.underlineLeft}]}/>
             <Condition {...{label: this.state.label, props: this.props}}></Condition>
           </SafeAreaView>
         );
@@ -66,13 +66,14 @@ const styles = StyleSheet.create({
     },
 
     upper: {
-      justifyContent: 'space-between',
+      justifyContent: 'center',
       alignContent: 'center',
       width: '100%',
       height: scale(382),
       elevation: 20,
       backgroundColor: 'white',
       borderRadius: 30,
+      top: -20,
     },
     logoContainer: {
       justifyContent: 'center',
@@ -87,13 +88,15 @@ const styles = StyleSheet.create({
     },
     underline: {
       backgroundColor: CUSTOM_COLOR.SunsetOrange,
-      width: scale(131),
+      width: scale(134),
       height: 3,
+      bottom: 0,
+      position: 'absolute',
     },
     buttonContainer: {
       flexDirection:'row',
-      marginBottom: 15,
-      
+      bottom: 20,
+      position: 'absolute',
     },
     button: {
       alignSelf: 'flex-end',
