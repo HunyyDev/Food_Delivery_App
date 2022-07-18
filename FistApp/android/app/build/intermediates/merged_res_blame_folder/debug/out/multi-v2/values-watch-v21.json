@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\ANDROID\\food-delivery-app\\FistApp\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v21\\values-watch-v21.xml",
+            "outputFile": "D:\\UIT\\food-delivery-app\\FistApp\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-watch-v21\\values-watch-v21.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\LENOVO\\.gradle\\caches\\transforms-3\\a5da391e889210c4d2ba1ae6744f6033\\transformed\\appcompat-1.4.1\\res\\values-watch-v21\\values-watch-v21.xml",
+                    "source": "C:\\Users\\Hung\\.gradle\\caches\\transforms-3\\a5da391e889210c4d2ba1ae6744f6033\\transformed\\appcompat-1.4.1\\res\\values-watch-v21\\values-watch-v21.xml",
                     "from": {
                         "startLines": "2,6,10",
                         "startColumns": "4,4,4",
