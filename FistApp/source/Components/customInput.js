@@ -1,6 +1,10 @@
 import React, {Component } from "react";
+<<<<<<< FistApp/source/Components/customInput.js
 import {Text, StyleSheet, View, SafeAreaView, TextInput, Button, Image, TouchableOpacity, NativeEventEmitter, _Text} from 'react-native';
 import CUSTOM_COLOR from "../constant/color";
+=======
+import {Text, StyleSheet, TextInput} from 'react-native';
+>>>>>>> FistApp/source/Components/customInput.js
 export class CustomInput extends Component{
     constructor(props){
         super(props);

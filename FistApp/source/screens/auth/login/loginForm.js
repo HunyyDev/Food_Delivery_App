@@ -12,6 +12,7 @@ export class LoginForm extends Component{
       return ( 
         /* Here render the login input section */
         <>
+<<<<<<< FistApp/source/screens/auth/login/loginForm.js
         <ScrollView>
           <View style={styles.lower}>
             {/* Email address */}
@@ -24,8 +25,21 @@ export class LoginForm extends Component{
               <Text style={styles.text}> {'Forget passcode?'}</Text>
             </TouchableOpacity>
           </View> 
+=======
+        <View style={styles.lower}>
+          {/* Email address */}
+          <CustomInput label={'E-mail address'} />
+          <View style={{ height: scale(46) }} />
+          {/* Password */}
+          <CustomInput label={'Password'} />
+          {/* Forget password link(still in progress) */}
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style={{marginTop: scale(34), marginRight: 'auto'}}>
+            <Text style={styles.text}> {'Forget passcode?'}</Text>
+          </TouchableOpacity>
+        </View>
+>>>>>>> FistApp/source/screens/auth/login/loginForm.js
         {/* Button */}
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('inProgress')} style= {styles.button}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style= {styles.button}>
           <Text style={styles.buttonText}>{'Login'}</Text>
         </TouchableOpacity>
         </ScrollView></>
