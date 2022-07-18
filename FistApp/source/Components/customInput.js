@@ -17,12 +17,11 @@ export class CustomInput extends Component{
             <Text style = {styles.inputLabel}>{this.state.label}</Text>
             <TextInput
             style={styles.inputContainer}
-            onChangeText={text => this.setState({label: text})}
+            onChangeText={text => this.setState({value: text})}
             placeholder = {this.props.placeHolder}
             placeholderTextColor= {CUSTOM_COLOR.Whisper}
-            secureTextEntry={true}
-            value = {value}
-            
+            secureTextEntry={this.props.secureTextEntry}
+            value = {this.state.value}
             />
         </>
         );
