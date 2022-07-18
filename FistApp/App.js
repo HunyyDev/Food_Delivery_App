@@ -5,6 +5,7 @@ import { NavigationContainer} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import {StyleSheet} from 'react-native';
 import { InProgress } from "./source/screens/inProgress/inProgress";
+import HomeScreen from "./source/screens/HomeScreen/HomeScreen";
 const Stack = createNativeStackNavigator();
 
 const App = props =>{
@@ -18,7 +19,7 @@ const App = props =>{
           <Stack.Screen name =  "Login" options={{headerShown: false}}>
             {props => <LoginScreen {...props}/>}
           </Stack.Screen>
-          <Stack.Screen name = "HomeScreen" option ={{headerShown: false}}>
+          <Stack.Screen name = "HomeScreen" options ={{headerShown: false}}>
             {props => <HomeScreen {...props}/>}
           </Stack.Screen>
           <Stack.Screen name = 'inProgress' component={InProgress} option ={{headerShow: false}}/>
