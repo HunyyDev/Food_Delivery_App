@@ -20,6 +20,7 @@ export class SignUp extends Component{
     }
     render() {
       return (
+<<<<<<< FistApp/source/screens/auth/login/SignUpForm.js
         /* Here render the Sign-Up input section */ 
         <><ScrollView>
             <View style={styles.lower}>
@@ -27,16 +28,33 @@ export class SignUp extends Component{
               <CustomInput label={'E-mail address'} placeHolder={'E-mail'}/>
               <View style={{ height: scale(46) }} />
               {/* Password */}
-              <CustomInput label={'Password'} placeHolder ={'Password'}  secureTextEntry = {true} />
+              <CustomInput label={'Password'} placeHolder ={'Password'}  secureTextEntry = {true} secureTextEntryText = '*'/>
               <View style={{ height: scale(20) }} />
               {/* Confirm password */}
-              <CustomInput label={' Confirm Password'} placeHolder ={'Confirm Password'} secureTextEntry = {true}/>
+              <CustomInput label={' Confirm Password'} placeHolder ={'Confirm Password'} secureTextEntry = {true} secureTextEntryText = '*'/>
             </View>
             {/* Button */}
             <TouchableOpacity  style={styles.button}>
               <Text style={styles.buttonText}>{'Sign Up'}</Text>
             </TouchableOpacity>
           </ScrollView></>
+=======
+        /* Here render the Sign-Up input section */
+        <><View style={styles.lower}>
+          {/* Email address */}
+          <CustomInput label={'E-mail address'} />
+          <View style={{ height: scale(46) }} />
+          {/* Password */}
+          <CustomInput label={'Password'} />
+          <View style={{ height: scale(20) }} />
+          {/* Confirm password */}
+          <CustomInput label={' Confirm Password'} />
+        </View>
+        {/* Button */}
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style={styles.button}>
+          <Text style={styles.buttonText}>{'Sign Up'}</Text>
+        </TouchableOpacity></>
+>>>>>>> FistApp/source/screens/auth/login/SignUpForm.js
       )
     }
 };
