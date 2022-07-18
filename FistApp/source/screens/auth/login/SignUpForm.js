@@ -1,5 +1,5 @@
 import React, {Component } from "react";
-import {Text, StyleSheet, View, SafeAreaView, TextInput, Button, Image, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, View, SafeAreaView, TextInput, Button, Image, TouchableOpacity, ScrollView} from 'react-native';
 import scale from "../../../constant/reponsive";
 import { styles } from "./style";
 import { CustomInput } from "../../../Components/customInput";
@@ -20,21 +20,23 @@ export class SignUp extends Component{
     }
     render() {
       return (
-        /* Here render the Sign-Up input section */
-        <><View style={styles.lower}>
-          {/* Email address */}
-          <CustomInput label={'E-mail address'} />
-          <View style={{ height: scale(46) }} />
-          {/* Password */}
-          <CustomInput label={'Password'} />
-          <View style={{ height: scale(20) }} />
-          {/* Confirm password */}
-          <CustomInput label={' Confirm Password'} />
-        </View>
-        {/* Button */}
-        <TouchableOpacity  style={styles.button}>
-          <Text style={styles.buttonText}>{'Sign Up'}</Text>
-        </TouchableOpacity></>
+        /* Here render the Sign-Up input section */ 
+        <><ScrollView>
+            <View style={styles.lower}>
+              {/* Email address */}
+              <CustomInput label={'E-mail address'} placeHolder={'E-mail'}/>
+              <View style={{ height: scale(46) }} />
+              {/* Password */}
+              <CustomInput label={'Password'} placeHolder ={'Password'}  secureTextEntry = {true} secureTextEntryText = '*'/>
+              <View style={{ height: scale(20) }} />
+              {/* Confirm password */}
+              <CustomInput label={' Confirm Password'} placeHolder ={'Confirm Password'} secureTextEntry = {true} secureTextEntryText = '*'/>
+            </View>
+            {/* Button */}
+            <TouchableOpacity  style={styles.button}>
+              <Text style={styles.buttonText}>{'Sign Up'}</Text>
+            </TouchableOpacity>
+          </ScrollView></>
       )
     }
 };
