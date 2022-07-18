@@ -1,5 +1,5 @@
 import React, {Component } from "react";
-import {Text, StyleSheet, View, SafeAreaView, TextInput, Button, Image, TouchableOpacity} from 'react-native';
+import {Text, StyleSheet, TextInput} from 'react-native';
 export class CustomInput extends Component{
     constructor(props){
         super(props);
