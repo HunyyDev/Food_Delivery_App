@@ -19,12 +19,12 @@ export class LoginForm extends Component{
           {/* Password */}
           <CustomInput label={'Password'} />
           {/* Forget password link(still in progress) */}
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('inProgress')} style={{marginTop: scale(34), marginRight: 'auto'}}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style={{marginTop: scale(34), marginRight: 'auto'}}>
             <Text style={styles.text}> {'Forget passcode?'}</Text>
           </TouchableOpacity>
         </View>
         {/* Button */}
-        <TouchableOpacity onPress={() => this.props.navigation.navigate('inProgress')} style= {styles.button}>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style= {styles.button}>
           <Text style={styles.buttonText}>{'Login'}</Text>
         </TouchableOpacity></>
       );
