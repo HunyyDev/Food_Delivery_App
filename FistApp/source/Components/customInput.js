@@ -10,9 +10,6 @@ export class CustomInput extends Component{
             secureTextEntry: props.secureTextEntry | false,
         };
     }
-    setValue = (text) =>{
-      this.state.value += text.charAt(text.length - 1);
-    }
     render() {
         console.log('this.state', this.state);
         return(
