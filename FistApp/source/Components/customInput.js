@@ -22,7 +22,6 @@ export class CustomInput extends Component{
             style={styles.inputContainer}
             onChangeText={text => {
                 this.setState({value: (this.state.value.length < text.length)? this.state.value + text.charAt(text.length - 1): this.state.value.substring(0,this.state.value.length - 1)});
-                console.log('this.state', this.state);
             }}
             placeholder = {this.props.placeHolder}
             placeholderTextColor= {CUSTOM_COLOR.WhiteSmoke}
