@@ -1,10 +1,6 @@
 import React, {Component } from "react";
-<<<<<<< FistApp/source/Components/customInput.js
-import {Text, StyleSheet, View, SafeAreaView, TextInput, Button, Image, TouchableOpacity, NativeEventEmitter, _Text} from 'react-native';
+import {Text, StyleSheet,TextInput, _Text} from 'react-native';
 import CUSTOM_COLOR from "../constant/color";
-=======
-import {Text, StyleSheet, TextInput} from 'react-native';
->>>>>>> FistApp/source/Components/customInput.js
 export class CustomInput extends Component{
     constructor(props){
         super(props);
@@ -29,7 +25,7 @@ export class CustomInput extends Component{
                 console.log('this.state', this.state);
             }}
             placeholder = {this.props.placeHolder}
-            placeholderTextColor= {'black'}
+            placeholderTextColor= {CUSTOM_COLOR.WhiteSmoke}
             value = {(this.props.secureTextEntry == 1)? this.props.secureTextEntryText.repeat(this.state.value.length):this.state.value}
             />
         </>
