@@ -33,7 +33,6 @@ export default class LoginScreen extends Component{
             onPressHandle={() => {
               this.getData();
             }}>
-
             <View style = {styles.upper}>
               {/*Logo*/}
               <View style ={styles.logoContainer}>
