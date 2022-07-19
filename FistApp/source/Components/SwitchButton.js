@@ -4,7 +4,9 @@ import {View,Text, StyleSheet, Component,TouchableOpacity } from "react";
 export default class SwitchButton extends Component{
     constructor(props){
         super(props);
-        this.state = {};
+        this.state = {
+            label: props
+        };
     }
 
     render(){
