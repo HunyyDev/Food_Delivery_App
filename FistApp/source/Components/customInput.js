@@ -1,5 +1,6 @@
+
 import React, {Component } from "react";
-import {Text, StyleSheet, View, SafeAreaView, TextInput, Button, Image, TouchableOpacity, NativeEventEmitter, _Text} from 'react-native';
+import {Text, StyleSheet,_Text} from 'react-native';
 import CUSTOM_COLOR from "../constant/color";
 export class CustomInput extends Component{
     constructor(props){
