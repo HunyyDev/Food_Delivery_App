@@ -39,17 +39,6 @@ export default class LoginScreen extends Component{
                 <Image source = {IMG_bella} style = {styles.logo}/>
                 <Image source ={IMG_vector1} style = {{position: 'absolute',marginLeft: scale(242),marginTop: scale(164.81)}}/>
               </View>
-              {/* Button */}
-              <View style = {styles.buttonContainer}>
-                <TouchableOpacity onPress={() => this.setState({label: 'login',underlineLeft: scale(40), })} style = {styles.button}>
-                  <Text style={styles.buttonText}>{'Login'}</Text>
-                </TouchableOpacity>
-                <TouchableOpacity onPress={() => this.setState({label: 'SignUp',underlineLeft: scale(260)})} style = {styles.button}>
-                  <Text style={styles.buttonText}>{'Sign-up'}</Text>
-                </TouchableOpacity>
-              </View>
-              {/* Line */}
-              <View style={[styles.underline,{marginLeft: this.state.underlineLeft}]}/>
             </View>
             <Condition {...{label: this.state.label, props: this.props}}></Condition>
           </SafeAreaView>
@@ -85,30 +74,5 @@ const styles = StyleSheet.create({
       alignSelf: 'center',
       resizeMode: 'cover',
     },
-    underline: {
-      backgroundColor: CUSTOM_COLOR.SunsetOrange,
-      width: scale(134),
-      height: 3,
-      bottom: 0,
-      position: 'absolute',
-    },
-    buttonContainer: {
-      flexDirection:'row',
-      bottom: 20,
-      position: 'absolute',
-    },
-    button: {
-      alignSelf: 'flex-end',
-      flex: 1,
-    },
-
-    buttonText: {
-      color: 'black',
-      fontFamily: CUSTOM_FONT.SF_PRO_ROUNDED,
-      fontWeight: 'bold',
-      alignSelf: 'center',
-      justifyContent: 'center',
-      fontSize: 18,
-    },
-
+    
 });
