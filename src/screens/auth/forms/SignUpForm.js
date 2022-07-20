@@ -3,6 +3,8 @@ import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import scale from '../../../constants/responsive';
 import { styles } from './styles';
 import { CustomInput } from '../../../components/CustomInput';
+import { createUserWithEmailAndPassword } from '@firebase/auth';
+import { auth } from '../../../firebase-config';
 export class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -27,13 +29,25 @@ export class SignUp extends Component {
     this.setState({ confirmPasswords: text })
   }
 
+  Register = async () => {
+    try {
+      const user = await createUserWithEmailAndPassword(
+        auth,
+        this.state.email,
+        this.state.password
+      )
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
   handleSignUpClick = () => {
     console.log(this.state)
     console.log(this.props)
     /*
     this feature is on developing, basic idea is check if all input is valid then store in database, otherwise, alert error
     */
-   
+    if (this.state.password == this.state.confirmPasswords)
+      this.Register();
   }
 
   render() {

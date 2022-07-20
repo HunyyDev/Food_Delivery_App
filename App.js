@@ -29,8 +29,7 @@ const App = props => {
               </Stack.Screen>
             </>
           )}
-
-
+          
           <Stack.Screen
             name="InProgress"
             component={InProgress}

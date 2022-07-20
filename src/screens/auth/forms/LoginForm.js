@@ -3,6 +3,9 @@ import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
 import { CustomInput } from "../../../components/CustomInput";
+import { signInWithEmailAndPassword } from "@firebase/auth";
+import { auth } from "../../../firebase-config";
+
 export class LoginForm extends Component {
   constructor(props) {
     super(props);
@@ -20,12 +23,20 @@ export class LoginForm extends Component {
     this.setState({ password: text })
   }
 
-  handleLoginClick = () => {
+  handleLoginClick = async () => {
     console.log(this.state)
-    /*
-      this function is on developing, basic idea is check email and password in database, if user account exist is database setAuth(true), otherwise, do nothing
-    */
-    this.props.setAuth(true);
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        this.state.email,
+        this.state.password
+      )
+      console.log(user)
+      this.props.setAuth(true);
+    } catch (error) {
+      console.log(error.message)
+    }
+
   }
 
   render() {
