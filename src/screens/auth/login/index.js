@@ -1,21 +1,18 @@
 import React, {Component} from 'react';
-import {StyleSheet, View, SafeAreaView, Image} from 'react-native';
+import {StyleSheet, View, SafeAreaView, Image, Text} from 'react-native';
 import SwitchButton from '../../../components/SwitchButton';
 import scale from '../../../constants/responsive';
 import {IMG_bella, IMG_vector1} from '../../../assets/images';
-import {LoginForm} from './LoginForm';
-import {SignUp} from './SignUpForm';
-
-function Condition(props) {
-  if (props.label == 'login') return <LoginForm {...props.props} />;
-  else return <SignUp {...props.props} />;
-}
+import Form from '../forms';
+import CUSTOM_COLOR from '../../../constants/colors';
+import UnderlineButton from '../../../components/UnderlineButton';
+import CUSTOM_FONT from '../../../constants/fonts';
 
 export default class LoginScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      label: 'login',
+      label: 'Login',
     };
   }
   render() {
@@ -41,13 +38,53 @@ export default class LoginScreen extends Component {
               }}
             />
           </View>
-          <SwitchButton onPress={label => this.setState({label: label})} />
+          <SwitchButton
+            containerStyle={{
+              width: '100%',
+              height: 100,
+              position: 'absolute',
+              bottom: 0,
+            }}
+            flexGrow={1}
+            justifyContent={'center'}
+            flexDirection={'row'}>
+            <View style={styles.buttonContainer}>
+              <UnderlineButton
+                label={'Login'}
+                onPress={() => this.setState({label: 'Login'})}
+                underlineStyle={[
+                  styles.underline,
+                  {
+                    backgroundColor:
+                      this.state.label == 'Login'
+                        ? CUSTOM_COLOR.SunsetOrange
+                        : 'transparent',
+                  },
+                ]}>
+                <Text style={styles.buttonText}>{'Login'}</Text>
+              </UnderlineButton>
+              <UnderlineButton
+                label={'Sign-Up'}
+                onPress={() => this.setState({label: 'SignUp'})}
+                underlineStyle={[
+                  styles.underline,
+                  {
+                    backgroundColor:
+                      this.state.label != 'Login'
+                        ? CUSTOM_COLOR.SunsetOrange
+                        : 'transparent',
+                  },
+                ]}>
+                <Text style={styles.buttonText}>{'Sign-Up'}</Text>
+              </UnderlineButton>
+            </View>
+          </SwitchButton>
         </View>
-        <Condition label={this.state.label} props={this.props} />
+        <Form label={this.state.label} other={this.props}/>
       </SafeAreaView>
     );
   }
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -77,5 +114,32 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignSelf: 'center',
     resizeMode: 'cover',
+  },
+  buttonContainer: {
+    paddingTop: 10,
+    width: '100%',
+    flexDirection: 'row',
+    bottom: 0,
+    position: 'absolute',
+    overflow: 'hidden',
+    justifyContent: 'space-evenly',
+  },
+  button: {
+    flex: 1,
+    position:'absolute',
+    bottom: 10,
+  },
+  buttonText: {
+    color: 'black',
+    fontFamily: CUSTOM_FONT.Bold,
+    alignSelf: 'center',
+    justifyContent: 'center',
+    fontSize: 18,
+  },
+
+  underline: {
+    width: scale(134),
+    height: 3,
+    alignSelf: 'center',
   },
 });

@@ -42,7 +42,7 @@ export class SignUp extends Component {
             />
           </View>
           {/* Button */}
-          <TouchableOpacity style={styles.button}>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style={styles.button}>
             <Text style={styles.buttonText}>{'Sign Up'}</Text>
           </TouchableOpacity>
         </ScrollView>
