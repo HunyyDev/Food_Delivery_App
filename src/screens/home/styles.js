@@ -64,7 +64,6 @@ const styles = StyleSheet.create({
     color: CUSTOM_COLOR.Vermilion,
     fontFamily: CUSTOM_FONT.Bold,
     fontSize: scale(17),
-    fontWeight: '400',
     marginRight: scale(91),
   },
   scrollContainer: {
@@ -84,7 +83,6 @@ const styles = StyleSheet.create({
     color: CUSTOM_COLOR.White,
     fontFamily: CUSTOM_FONT.Bold,
     fontSize: scale(22),
-    fontWeight: '400',
   },
   optionText2: {
     alignSelf: 'center',
@@ -92,7 +90,6 @@ const styles = StyleSheet.create({
     color: CUSTOM_COLOR.Vermilion,
     fontFamily: CUSTOM_FONT.Bold,
     fontSize: scale(17),
-    fontWeight: '400',
   },
   imageOption: {
     width: scale(220),

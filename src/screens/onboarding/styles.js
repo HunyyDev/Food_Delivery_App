@@ -61,7 +61,6 @@ const styles = StyleSheet.create({
       color: CUSTOM_COLOR.SunsetOrange,
       fontFamily: CUSTOM_FONT.Regular,
       fontSize: scale(17),
-      fontWeight: '600',
       justifyContent: 'center',
       alignSelf: 'center',
     },
