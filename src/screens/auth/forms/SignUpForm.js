@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {Text, View, TouchableOpacity, ScrollView} from 'react-native';
+import React, { Component } from 'react';
+import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
 import scale from '../../../constants/responsive';
-import {styles} from './styles';
-import {CustomInput} from '../../../components/CustomInput';
+import { styles } from './styles';
+import { CustomInput } from '../../../components/CustomInput';
 export class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +13,6 @@ export class SignUp extends Component {
       password: '',
       confirmPasswords: '',
     };
-  }
-
-  checkAuthentic(props) {
-    /* return boolean variable if the email and password is correct/store in login_info.txt */
   }
 
   handleEmailChange = (text) => {
@@ -33,7 +29,11 @@ export class SignUp extends Component {
 
   handleSignUpClick = () => {
     console.log(this.state)
-    
+    console.log(this.props)
+    /*
+    this feature is on developing, basic idea is check if all input is valid then store in database, otherwise, alert error
+    */
+   
   }
 
   render() {
@@ -43,11 +43,11 @@ export class SignUp extends Component {
         <ScrollView>
           <View style={styles.lower}>
             {/* Email address */}
-            <CustomInput 
-            label={'E-mail address'} 
-            placeHolder={'E-mail'} 
-            onChangeInput={this.handleEmailChange}/>
-            <View style={{height: scale(46)}} />
+            <CustomInput
+              label={'E-mail address'}
+              placeHolder={'E-mail'}
+              onChangeInput={this.handleEmailChange} />
+            <View style={{ height: scale(46) }} />
             {/* Password */}
             <CustomInput
               label={'Password'}
@@ -55,7 +55,7 @@ export class SignUp extends Component {
               secureTextEntry={true}
               onChangeInput={this.handlePasswordChange}
             />
-            <View style={{height: scale(20)}} />
+            <View style={{ height: scale(20) }} />
             {/* Confirm password */}
             <CustomInput
               label={' Confirm Password'}

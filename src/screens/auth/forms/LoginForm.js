@@ -22,8 +22,12 @@ export class LoginForm extends Component {
 
   handleLoginClick = () => {
     console.log(this.state)
+    /*
+      this function is on developing, basic idea is check email and password in database, if user account exist is database setAuth(true), otherwise, do nothing
+    */
     this.props.setAuth(true);
   }
+
   render() {
     return (
       /* Here render the login input section */
