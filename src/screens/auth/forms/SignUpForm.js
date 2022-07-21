@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from '../../../constants/responsive';
 import { styles } from './styles';
 import { CustomInput } from '../../../components/CustomInput';
@@ -37,7 +37,18 @@ export class SignUp extends Component {
         this.state.password
       )
     } catch (error) {
-      console.log(error.message)
+      console.log(error.code)
+      switch (error.code) {
+        case "auth/invalid-email":
+          Alert.alert("Email already exist");
+          break;
+        case "auth/too-many-requests":
+          Alert.alert("Too many request, try again later")
+          break;
+
+        default:
+          break;
+      }
     }
   }
   handleSignUpClick = () => {
@@ -46,8 +57,11 @@ export class SignUp extends Component {
     /*
     this feature is on developing, basic idea is check if all input is valid then store in database, otherwise, alert error
     */
-    if (this.state.password == this.state.confirmPasswords)
+    if (this.state.password == this.state.confirmPasswords) {
       this.Register();
+    } else {
+      Alert.alert("Password and confirm password does not match")
+    }
   }
 
   render() {

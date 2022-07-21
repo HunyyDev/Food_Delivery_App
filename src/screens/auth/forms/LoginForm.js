@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, View, TouchableOpacity, ScrollView } from 'react-native';
+import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
 import { CustomInput } from "../../../components/CustomInput";
@@ -34,7 +34,22 @@ export class LoginForm extends Component {
       console.log(user)
       this.props.setAuth(true);
     } catch (error) {
-      console.log(error.message)
+      console.log(error.code)
+      switch (error.code) {
+        case "auth/invalid-email":
+          Alert.alert("Email does not exist, please sign in ")
+          break;
+        case "auth/wrong-password":
+          Alert.alert("wrong password")
+          break;
+        case "auth/too-many-requests":
+          Alert.alert("Too many request, try again later")
+          break;
+
+        default:
+          break;
+      }
+
     }
 
   }
