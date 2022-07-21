@@ -4,5 +4,7 @@ const CUSTOM_COLOR = {
   Whisper: '#EFEEEE',
   Black: '#000000',
   White: '#FFFFFF',
+  Vermilion: '#FA4A0C',
+ 
 };
 export default CUSTOM_COLOR;
