@@ -9,15 +9,33 @@ export class SignUp extends Component {
     this.state = {
       /*TextInput will be save in here whenever an CustomInput has been done writing
           After that, state will be save in a file name login_info.txt*/
-      email: props.email,
-      password: props.password,
-      confirmPasswords: props.confirmPassWord,
+      email: '',
+      password: '',
+      confirmPasswords: '',
     };
   }
 
   checkAuthentic(props) {
     /* return boolean variable if the email and password is correct/store in login_info.txt */
   }
+
+  handleEmailChange = (text) => {
+    this.setState({ email: text })
+  }
+
+  handlePasswordChange = (text) => {
+    this.setState({ password: text })
+  }
+
+  handleConfirmPasswordChange = (text) => {
+    this.setState({ confirmPasswords: text })
+  }
+
+  handleSignUpClick = () => {
+    console.log(this.state)
+    
+  }
+
   render() {
     return (
       /* Here render the Sign-Up input section */
@@ -25,13 +43,17 @@ export class SignUp extends Component {
         <ScrollView>
           <View style={styles.lower}>
             {/* Email address */}
-            <CustomInput label={'E-mail address'} placeHolder={'E-mail'} />
+            <CustomInput 
+            label={'E-mail address'} 
+            placeHolder={'E-mail'} 
+            onChangeInput={this.handleEmailChange}/>
             <View style={{height: scale(46)}} />
             {/* Password */}
             <CustomInput
               label={'Password'}
               placeHolder={'Password'}
               secureTextEntry={true}
+              onChangeInput={this.handlePasswordChange}
             />
             <View style={{height: scale(20)}} />
             {/* Confirm password */}
@@ -39,10 +61,11 @@ export class SignUp extends Component {
               label={' Confirm Password'}
               placeHolder={'Confirm Password'}
               secureTextEntry={true}
+              onChangeInput={this.handleConfirmPasswordChange}
             />
           </View>
           {/* Button */}
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('HomeScreen')} style={styles.button}>
+          <TouchableOpacity style={styles.button} onPress={this.handleSignUpClick}>
             <Text style={styles.buttonText}>{'Sign Up'}</Text>
           </TouchableOpacity>
         </ScrollView>
