@@ -49,6 +49,7 @@ export default class LoginScreen extends Component {
             flexDirection={'row'}>
             <View style={styles.buttonContainer}>
               <UnderlineButton
+                style = {styles.button}
                 onPress={() => this.setState({label: 'Login'})}
                 underlineStyle={[
                   styles.underline,
@@ -62,6 +63,7 @@ export default class LoginScreen extends Component {
                 <Text style={styles.buttonText}>{'Login'}</Text>
               </UnderlineButton>
               <UnderlineButton
+                style = {styles.button}
                 onPress={() => this.setState({label: 'SignUp'})}
                 underlineStyle={[
                   styles.underline,
