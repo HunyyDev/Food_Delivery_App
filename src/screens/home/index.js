@@ -2,7 +2,6 @@ import {Component} from 'react';
 import React from 'react';
 import {
   SafeAreaView,
-  StyleSheet,
   Image,
   View,
   Text,
@@ -13,6 +12,7 @@ import {IMG_search, IMG_vector} from '../../assets/images';
 import {IMG_cart} from '../../assets/images';
 import {IMG_Scroll1, IMG_Scroll2} from '../../assets/images';
 import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../assets/images';
+import styles from './styles';
 
 export default class HomeScreen extends Component {
   constructor(props) {
