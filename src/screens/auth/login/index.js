@@ -17,9 +17,6 @@ export default class LoginScreen extends Component {
   }
 
   render() {
-    // return JSX
-    console.log('this.state', this.state);
-
     return (
       <SafeAreaView
         style={styles.container}
