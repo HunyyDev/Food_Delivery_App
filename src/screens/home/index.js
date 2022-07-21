@@ -10,8 +10,6 @@ import {
   ScrollView,
 } from 'react-native';
 import {IMG_search, IMG_vector} from '../../assets/images';
-import CUSTOM_COLOR from '../../constants/colors';
-import scale from '../../constants/responsive';
 import {IMG_cart} from '../../assets/images';
 import CUSTOM_FONT from '../../constants/fonts';
 import {CustomInput} from '../../Components/customInput';
