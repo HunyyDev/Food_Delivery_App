@@ -15,12 +15,7 @@ export default class LoginScreen extends Component {
       label: 'Login',
     };
   }
-<<<<<<< src/screens/auth/login/index.js
-  render() {
-    // return JSX
-=======
->>>>>>> src/screens/auth/login/index.js
-
+  
   render() {
     return (
       <SafeAreaView
