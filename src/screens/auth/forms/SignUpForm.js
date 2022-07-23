@@ -34,13 +34,19 @@ export class SignUp extends Component {
       const user = await createUserWithEmailAndPassword(
         auth,
         this.state.email,
-        this.state.password
+        this.state.password,
       )
+      Alert.alert('Sign up successfully')
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
         case "auth/invalid-email":
-          Alert.alert("Email already exist");
+          if(this.state.email.includes('@')) {
+            Alert.alert("Email already exist");
+          }
+          else {
+            Alert.alert("Invalid email")
+          }
           break;
         case "auth/too-many-requests":
           Alert.alert("Too many request, try again later")
@@ -51,16 +57,19 @@ export class SignUp extends Component {
       }
     }
   }
+
   handleSignUpClick = () => {
-    console.log(this.state)
-    console.log(this.props)
-    /*
-    this feature is on developing, basic idea is check if all input is valid then store in database, otherwise, alert error
-    */
-    if (this.state.password == this.state.confirmPasswords) {
-      this.Register();
-    } else {
+    if (this.state.email == '') {
+      Alert.alert('Email can not be empty')
+    }
+    else if (this.state.password == '') {
+      Alert.alert('Password can not be empty')
+    }
+    else if (this.state.password != this.state.confirmPasswords) {
       Alert.alert("Password and confirm password does not match")
+    }
+    else {
+      this.Register();
     }
   }
 

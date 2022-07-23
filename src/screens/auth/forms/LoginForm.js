@@ -23,15 +23,13 @@ export class LoginForm extends Component {
     this.setState({ password: text })
   }
 
-  handleLoginClick = async () => {
-    console.log(this.state)
+  Login = async () => {
     try {
       const user = await signInWithEmailAndPassword(
         auth,
         this.state.email,
         this.state.password
       )
-      console.log(user)
       this.props.setAuth(true);
     } catch (error) {
       console.log(error.code)
@@ -45,13 +43,22 @@ export class LoginForm extends Component {
         case "auth/too-many-requests":
           Alert.alert("Too many request, try again later")
           break;
-
         default:
           break;
       }
-
     }
+  }
 
+  handleLoginClick = () => {
+    if (this.state.email == '') {
+      Alert.alert('Email can not be empty')
+    }
+    else if (this.state.password == '') {
+      Alert.alert('Password can not be empty')
+    }
+    else {
+      this.Login();
+    }
   }
 
   render() {
