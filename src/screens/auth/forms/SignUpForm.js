@@ -37,16 +37,15 @@ export class SignUp extends Component {
         this.state.password,
       )
       Alert.alert('Sign up successfully')
+      this.props.setLabel("Login");
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
+        case "auth/email-already-in-use":
+          Alert.alert("Email already exist")
+          break;
         case "auth/invalid-email":
-          if(this.state.email.includes('@')) {
-            Alert.alert("Email already exist");
-          }
-          else {
-            Alert.alert("Invalid email")
-          }
+          Alert.alert("Invalid email")
           break;
         case "auth/too-many-requests":
           Alert.alert("Too many request, try again later")
@@ -74,6 +73,7 @@ export class SignUp extends Component {
   }
 
   render() {
+    console.log(this.props);
     return (
       /* Here render the Sign-Up input section */
       <>
