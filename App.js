@@ -8,28 +8,19 @@ import { InProgress } from './src/screens/inProgress';
 const Stack = createNativeStackNavigator();
 
 const App = props => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShow: false }}>
-          {isSignedIn ? (
-            <>
-              <Stack.Screen name="HomeScreen" options={{ headerShown: false }}>
-                {props => <HomeScreen {...props} />}
-              </Stack.Screen>
-            </>
-          ) : (
-            <>
-              <Stack.Screen name="Onboarding" options={{ headerShown: false }}>
-                {props => <Onboarding {...props} />}
-              </Stack.Screen>
-              <Stack.Screen name="Login" options={{ headerShown: false }}>
-                {props => <LoginScreen {...props} setAuth={setIsSignedIn}/>}
-              </Stack.Screen>
-            </>
-          )}
-          
+          <Stack.Screen name="Onboarding" options={{ headerShown: false }}>
+            {props => <Onboarding {...props} />}
+          </Stack.Screen>
+          <Stack.Screen name="Login" options={{ headerShown: false }}>
+            {props => <LoginScreen {...props} />}
+          </Stack.Screen>
+          <Stack.Screen name="HomeScreen" options={{ headerShown: false }}>
+            {props => <HomeScreen {...props} />}
+          </Stack.Screen>
           <Stack.Screen
             name="InProgress"
             component={InProgress}

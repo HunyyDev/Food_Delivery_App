@@ -26,17 +26,29 @@ export class LoginForm extends Component {
     this.setState({ password: text })
   }
 
-  Login = async () => {
+  handleSubmitForm = async () => {
     try {
+      if (this.state.email == '') {
+        throw ({ code: 'empty-email' })
+      }
+      else if (this.state.password == '') {
+        throw ({ code: 'empty-password' })
+      }
       const user = await signInWithEmailAndPassword(
         auth,
         this.state.email,
         this.state.password
       )
-      this.props.setAuth(true);
+      this.props.navigation.navigate('HomeScreen')
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
+        case "empty-email":
+          Alert.alert('Email can not be empty')
+          break;
+        case "empty-password":
+          Alert.alert('Password can not be empty')
+          break;
         case "auth/user-not-found":
           Alert.alert("Email does not exist, please sign in ")
           break;
@@ -55,28 +67,23 @@ export class LoginForm extends Component {
     }
   }
 
-  handleLoginClick = () => {
-    if (this.state.email == '') {
-      Alert.alert('Email can not be empty')
-    }
-    else if (this.state.password == '') {
-      Alert.alert('Password can not be empty')
-    }
-    else {
-      this.Login();
-    }
-  }
-
-  forgotPassword = async () => {
+  handleForgetPasswordClick = async () => {
     try {
+      if (this.state.email == '') {
+        throw ({ code: "empty-email" })
+      }
       await sendPasswordResetEmail(
         auth,
         this.state.email,
         null
       )
+
       Alert.alert('Reset password email sent to ' + this.state.email, 'Please check your email')
     } catch (error) {
       switch (error.code) {
+        case "empty-email":
+          Alert.alert('Please fill email address above');
+          break;
         case "auth/user-not-found":
           Alert.alert("Email does not exist")
           break;
@@ -89,15 +96,6 @@ export class LoginForm extends Component {
         default:
           break;
       }
-    }
-  }
-
-  handleForgetPasswordClick = () => {
-    if (this.state.email == '') {
-      Alert.alert('Please fill email address above');
-    }
-    else {
-      this.forgotPassword()
     }
   }
 
@@ -118,7 +116,7 @@ export class LoginForm extends Component {
             </TouchableOpacity>
           </View>
           {/* Button */}
-          <TouchableOpacity onPress={this.handleLoginClick} style={styles.button}>
+          <TouchableOpacity onPress={this.handleSubmitForm} style={styles.button}>
             <Text style={styles.buttonText}>{'Login'}</Text>
           </TouchableOpacity>
         </ScrollView></>

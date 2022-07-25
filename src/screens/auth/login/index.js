@@ -82,7 +82,7 @@ export default class LoginScreen extends Component {
             </View>
           </SwitchButton>
         </View>
-        <Form label={this.state.label} other={this.props} setLabel={this.changeLabel}/>
+        <Form label={this.state.label} other={this.props} setLabel={this.changeLabel} />
       </SafeAreaView>
     );
   }

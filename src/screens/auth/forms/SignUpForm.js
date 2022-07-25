@@ -29,8 +29,21 @@ export class SignUp extends Component {
     this.setState({ confirmPasswords: text })
   }
 
-  Register = async () => {
+  handleSubmitForm = async () => {
     try {
+      if (this.state.email == '') {
+        throw ({ code: 'empty-email' })
+      }
+      else if (this.state.password == '') {
+        throw ({ code: 'empty-password' })
+      }
+      else if (this.state.confirmPasswords == '') {
+        throw ({ code: 'empty-confirm-password' })
+      }
+      else if (this.state.password != this.state.confirmPasswords) {
+        throw ({ code: 'password-diff' })
+
+      }
       const user = await createUserWithEmailAndPassword(
         auth,
         this.state.email,
@@ -41,6 +54,18 @@ export class SignUp extends Component {
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
+        case "empty-email":
+          Alert.alert('Email can not be empty')
+          break;
+        case "empty-password":
+          Alert.alert('Password can not be empty')
+          break;
+        case "empty-confirm-password":
+          Alert.alert('Confirm password can not be empty')
+          break;
+        case "password-diff":
+          Alert.alert("Password and confirm password does not match")
+          break;
         case "auth/email-already-in-use":
           Alert.alert("Email already exist")
           break;
@@ -54,21 +79,6 @@ export class SignUp extends Component {
         default:
           break;
       }
-    }
-  }
-
-  handleSignUpClick = () => {
-    if (this.state.email == '') {
-      Alert.alert('Email can not be empty')
-    }
-    else if (this.state.password == '') {
-      Alert.alert('Password can not be empty')
-    }
-    else if (this.state.password != this.state.confirmPasswords) {
-      Alert.alert("Password and confirm password does not match")
-    }
-    else {
-      this.Register();
     }
   }
 
@@ -102,7 +112,7 @@ export class SignUp extends Component {
             />
           </View>
           {/* Button */}
-          <TouchableOpacity style={styles.button} onPress={this.handleSignUpClick}>
+          <TouchableOpacity style={styles.button} onPress={this.handleSubmitForm}>
             <Text style={styles.buttonText}>{'Sign Up'}</Text>
           </TouchableOpacity>
         </ScrollView>
