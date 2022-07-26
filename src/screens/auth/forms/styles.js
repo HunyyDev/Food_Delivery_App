@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   buttonText: {
-    color: 'white',
+    color: CUSTOM_COLOR.White,
     fontFamily: CUSTOM_FONT.Regular,
     fontSize: scale(17),
     justifyContent: 'center',
