@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {View, SafeAreaView, Image, Text} from 'react-native';
+import React, { Component } from 'react';
+import { View, SafeAreaView, Image, Text } from 'react-native';
 import SwitchButton from '../../../components/SwitchButton';
 import scale from '../../../constants/responsive';
-import {IMG_bella, IMG_vector1} from '../../../assets/images';
+import { IMG_bella, IMG_vector1 } from '../../../assets/images';
 import Form from '../forms';
 import CUSTOM_COLOR from '../../../constants/colors';
 import UnderlineButton from '../../../components/UnderlineButton';
@@ -15,11 +15,10 @@ export default class LoginScreen extends Component {
       label: 'Login',
     };
   }
-<<<<<<< src/screens/auth/login/index.js
-  render() {
-    // return JSX
-=======
->>>>>>> src/screens/auth/login/index.js
+
+  changeLabel = (text) => {
+    this.setState({ label: text });
+  }
 
   render() {
     return (
@@ -53,8 +52,8 @@ export default class LoginScreen extends Component {
             flexDirection={'row'}>
             <View style={styles.buttonContainer}>
               <UnderlineButton
-                style = {styles.button}
-                onPress={() => this.setState({label: 'Login'})}
+                style={styles.button}
+                onPress={() => this.setState({ label: 'Login' })}
                 underlineStyle={[
                   styles.underline,
                   {
@@ -67,8 +66,8 @@ export default class LoginScreen extends Component {
                 <Text style={styles.buttonText}>{'Login'}</Text>
               </UnderlineButton>
               <UnderlineButton
-                style = {styles.button}
-                onPress={() => this.setState({label: 'SignUp'})}
+                style={styles.button}
+                onPress={() => this.setState({ label: 'SignUp' })}
                 underlineStyle={[
                   styles.underline,
                   {
@@ -83,7 +82,7 @@ export default class LoginScreen extends Component {
             </View>
           </SwitchButton>
         </View>
-        <Form label={this.state.label} other={this.props}/>
+        <Form label={this.state.label} other={this.props} setLabel={this.changeLabel} />
       </SafeAreaView>
     );
   }
