@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -22,7 +22,10 @@ export class CustomInput extends Component {
         <Text style={styles.inputLabel}>{this.state.label}</Text>
         <TextInput
           style={styles.inputContainer}
-          onChangeText={text => this.setState({value: text})}
+          onChangeText={text => {
+            this.setState({ value: text })
+            this.props.onChangeInput(text)
+          }}
           placeholder={this.props.placeHolder}
           placeholderTextColor={CUSTOM_COLOR.Whisper}
           secureTextEntry={this.props.secureTextEntry}

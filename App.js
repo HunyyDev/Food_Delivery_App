@@ -1,13 +1,14 @@
 import LoginScreen from './src/screens/auth/login';
-import {Onboarding} from './src/screens/onboarding';
-import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import { Onboarding } from './src/screens/onboarding';
+import React, { useState } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/home';
-import {InProgress} from './src/screens/inProgress';
+import { InProgress } from './src/screens/inProgress';
 const Stack = createNativeStackNavigator();
 
 const App = props => {
+  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <>
       <NavigationContainer>
@@ -24,7 +25,7 @@ const App = props => {
           <Stack.Screen
             name="InProgress"
             component={InProgress}
-            option={{headerShow: false}}
+            option={{ headerShow: false }}
           />
         </Stack.Navigator>
       </NavigationContainer>
