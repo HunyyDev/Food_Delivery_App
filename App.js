@@ -11,14 +11,14 @@ const App = props => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShow: false}}>
-          <Stack.Screen name="Onboarding" options={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Screen name="Onboarding">
             {props => <Onboarding {...props} />}
           </Stack.Screen>
-          <Stack.Screen name="Login" options={{headerShown: false}}>
+          <Stack.Screen name="Login">
             {props => <LoginScreen {...props} />}
           </Stack.Screen>
-          <Stack.Screen name="HomeScreen" options={{headerShown: false}}>
+          <Stack.Screen name="HomeScreen">
             {props => <HomeScreen {...props} />}
           </Stack.Screen>
           <Stack.Screen
