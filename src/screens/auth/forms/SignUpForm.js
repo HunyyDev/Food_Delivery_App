@@ -83,7 +83,6 @@ export class SignUp extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       /* Here render the Sign-Up input section */
       <>
