@@ -75,7 +75,6 @@ export class SignUp extends Component {
         case "auth/too-many-requests":
           Alert.alert("Too many request, try again later")
           break;
-
         default:
           break;
       }
