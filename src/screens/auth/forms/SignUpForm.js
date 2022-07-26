@@ -29,18 +29,48 @@ export class SignUp extends Component {
     this.setState({ confirmPasswords: text })
   }
 
-  Register = async () => {
+  handleSubmitForm = async () => {
     try {
+      if (this.state.email == '') {
+        throw ({ code: 'empty-email' })
+      }
+      else if (this.state.password == '') {
+        throw ({ code: 'empty-password' })
+      }
+      else if (this.state.confirmPasswords == '') {
+        throw ({ code: 'empty-confirm-password' })
+      }
+      else if (this.state.password != this.state.confirmPasswords) {
+        throw ({ code: 'password-diff' })
+
+      }
       const user = await createUserWithEmailAndPassword(
         auth,
         this.state.email,
-        this.state.password
+        this.state.password,
       )
+      Alert.alert('Sign up successfully')
+      this.props.setLabel("Login");
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
+        case "empty-email":
+          Alert.alert('Email can not be empty')
+          break;
+        case "empty-password":
+          Alert.alert('Password can not be empty')
+          break;
+        case "empty-confirm-password":
+          Alert.alert('Confirm password can not be empty')
+          break;
+        case "password-diff":
+          Alert.alert("Password and confirm password does not match")
+          break;
+        case "auth/email-already-in-use":
+          Alert.alert("Email already exist")
+          break;
         case "auth/invalid-email":
-          Alert.alert("Email already exist");
+          Alert.alert("Invalid email")
           break;
         case "auth/too-many-requests":
           Alert.alert("Too many request, try again later")
@@ -51,20 +81,9 @@ export class SignUp extends Component {
       }
     }
   }
-  handleSignUpClick = () => {
-    console.log(this.state)
-    console.log(this.props)
-    /*
-    this feature is on developing, basic idea is check if all input is valid then store in database, otherwise, alert error
-    */
-    if (this.state.password == this.state.confirmPasswords) {
-      this.Register();
-    } else {
-      Alert.alert("Password and confirm password does not match")
-    }
-  }
 
   render() {
+    console.log(this.props);
     return (
       /* Here render the Sign-Up input section */
       <>
@@ -93,7 +112,7 @@ export class SignUp extends Component {
             />
           </View>
           {/* Button */}
-          <TouchableOpacity style={styles.button} onPress={this.handleSignUpClick}>
+          <TouchableOpacity style={styles.button} onPress={this.handleSubmitForm}>
             <Text style={styles.buttonText}>{'Sign Up'}</Text>
           </TouchableOpacity>
         </ScrollView>

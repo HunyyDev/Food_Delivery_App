@@ -8,7 +8,6 @@ import { InProgress } from './src/screens/inProgress';
 const Stack = createNativeStackNavigator();
 
 const App = props => {
-  const [isSignedIn, setIsSignedIn] = useState(false);
   return (
     <>
       <NavigationContainer>
