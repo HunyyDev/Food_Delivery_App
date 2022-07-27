@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   StyleSheet,
@@ -11,7 +11,9 @@ import {
 import CUSTOM_COLOR from '../../constants/colors';
 import CUSTOM_FONT from '../../constants/fonts';
 import scale from '../../constants/responsive';
-import {IMG_Logo, IMG_background} from '../../assets/images';
+import { IMG_Logo, IMG_background } from '../../assets/images';
+import { AuthContext } from '../../contexts/AuthContext';
+
 export class Onboarding extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +23,7 @@ export class Onboarding extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView
-          contentContainerStyle={{flexGrow: 1}}
+          contentContainerStyle={{ flexGrow: 1 }}
           style={styles.scrollView}>
           <View>
             <>{/* Logo */}</>
@@ -38,7 +40,16 @@ export class Onboarding extends Component {
         </ScrollView>
         <>{/* Button */}</>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Login')}
+          onPress={() => {
+            console.log(this.context)
+            // this.context.logout();
+            // console.log(this.context);
+            if (this.context.user) {
+              this.props.navigation.navigate('HomeScreen')
+            } else {
+              this.props.navigation.navigate('Login')
+            }
+          }}
           style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{'Get started '}</Text>
         </TouchableOpacity>
@@ -46,6 +57,8 @@ export class Onboarding extends Component {
     );
   }
 }
+
+Onboarding.contextType = AuthContext;
 
 const styles = StyleSheet.create({
   container: {

@@ -8,6 +8,10 @@ import { auth } from "../../../firebase-config";
 import { FirebaseError } from "firebase/app";
 import { async } from "@firebase/util";
 import { sendPasswordResetEmail } from "firebase/auth/react-native";
+import { AuthContext, UserAuth, AuthProvider } from "../../../contexts/AuthContext";
+import { Auth } from "firebase/auth/react-native";
+
+
 
 export class LoginForm extends Component {
   constructor(props) {
@@ -34,11 +38,7 @@ export class LoginForm extends Component {
       else if (this.state.password == '') {
         throw ({ code: 'empty-password' })
       }
-      const user = await signInWithEmailAndPassword(
-        auth,
-        this.state.email,
-        this.state.password
-      )
+      await signInWithEmailAndPassword(auth, this.state.email, this.state.password);
       this.props.navigation.navigate('HomeScreen')
     } catch (error) {
       console.log(error.code)
@@ -123,3 +123,5 @@ export class LoginForm extends Component {
     );
   }
 };
+
+LoginForm.contextType = AuthContext;
