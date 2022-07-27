@@ -13,6 +13,8 @@ import CUSTOM_FONT from '../../constants/fonts';
 import scale from '../../constants/responsive';
 import { IMG_Logo, IMG_background } from '../../assets/images';
 import { AuthContext } from '../../contexts/AuthContext';
+import { signOut } from 'firebase/auth/react-native';
+import { auth } from '../../firebase-config';
 
 export class Onboarding extends Component {
   constructor(props) {
@@ -40,9 +42,10 @@ export class Onboarding extends Component {
         </ScrollView>
         <>{/* Button */}</>
         <TouchableOpacity
-          onPress={() => {
-            console.log(this.context)
-            // this.context.logout();
+          onPress={async () => {
+            console.log(this.context);
+            // await signOut(auth);
+            //this.context.logout();
             // console.log(this.context);
             if (this.context.user) {
               this.props.navigation.navigate('HomeScreen')
