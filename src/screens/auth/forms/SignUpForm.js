@@ -75,7 +75,6 @@ export class SignUp extends Component {
         case "auth/too-many-requests":
           Alert.alert("Too many request, try again later")
           break;
-
         default:
           break;
       }
@@ -83,7 +82,6 @@ export class SignUp extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       /* Here render the Sign-Up input section */
       <>
