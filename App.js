@@ -1,10 +1,11 @@
 import LoginScreen from './src/screens/auth/login';
 import { Onboarding } from './src/screens/onboarding';
-import React, { useState } from 'react';
+import React, { Component, useContext, useState } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/home';
 import { InProgress } from './src/screens/inProgress';
+
 const Stack = createNativeStackNavigator();
 
 const App = props => {

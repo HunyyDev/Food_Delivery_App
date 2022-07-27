@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   Text,
   View,
@@ -18,7 +18,7 @@ export class Onboarding extends Component {
     return (
       <SafeAreaView style={styles.container}>
         <ScrollView
-          contentContainerStyle={{flexGrow: 1}}
+          contentContainerStyle={{ flexGrow: 1 }}
           style={styles.scrollView}>
           <View>
             <>{/* Logo */}</>
@@ -35,7 +35,16 @@ export class Onboarding extends Component {
         </ScrollView>
         <>{/* Button */}</>
         <TouchableOpacity
-          onPress={() => this.props.navigation.navigate('Login')}
+          onPress={() => {
+            console.log(this.context)
+            // this.context.logout();
+            // console.log(this.context);
+            if (this.context.user) {
+              this.props.navigation.navigate('HomeScreen')
+            } else {
+              this.props.navigation.navigate('Login')
+            }
+          }}
           style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{'Get started '}</Text>
         </TouchableOpacity>
