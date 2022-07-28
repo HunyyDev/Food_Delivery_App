@@ -7,15 +7,14 @@ import {
   Image,
   ScrollView,
 } from 'react-native';
-import CUSTOM_COLOR from '../../constants/colors';
-import CUSTOM_FONT from '../../constants/fonts';
-import scale from '../../constants/responsive';
-import { IMG_Logo, IMG_background } from '../../assets/images';
+
+import styles from './styles';
+import {IMG_Logo, IMG_background} from '../../assets/images';
+
 import { AuthContext } from '../../contexts/AuthContext';
 import { signOut } from 'firebase/auth/react-native';
 import { auth } from '../../firebase-config';
 
-import styles from './styles';
 export class Onboarding extends Component {
   constructor(props) {
     super(props);
@@ -43,6 +42,11 @@ export class Onboarding extends Component {
         <>{/* Button */}</>
         <TouchableOpacity
           onPress={async () => {
+
+            console.log(this.context)
+            // this.context.logout();
+            // console.log(this.context);
+
             await signOut(auth);
             if (this.context.user) {
               this.props.navigation.navigate('HomeScreen')
@@ -57,5 +61,6 @@ export class Onboarding extends Component {
     );
   }
 }
+
 
 Onboarding.contextType = AuthContext;

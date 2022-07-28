@@ -5,6 +5,10 @@ const CUSTOM_COLOR = {
   Black: '#000000',
   White: '#FFFFFF',
   Vermilion: '#FA4A0C',
- 
+  AthensGray: '#F5F5F8',
+  TahitiGold: '#F47B0A',
+  CornflowerBlue: '#6195ED',
+  FrenchRose:'#EB4796',
+  SilverChalice:'#9F9F9F',
 };
 export default CUSTOM_COLOR;
