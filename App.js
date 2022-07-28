@@ -5,6 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/home';
 import { InProgress } from './src/screens/inProgress';
+import Loading from './src/screens/Loading';
 
 const Stack = createNativeStackNavigator();
 
@@ -12,7 +13,7 @@ const App = props => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen name="Onboarding">
             {props => <Onboarding {...props} />}
           </Stack.Screen>
@@ -25,6 +26,11 @@ const App = props => {
           <Stack.Screen
             name="InProgress"
             component={InProgress}
+            option={{ headerShow: false }}
+          />
+          <Stack.Screen
+            name="Loading"
+            component={Loading}
             option={{ headerShow: false }}
           />
         </Stack.Navigator>
