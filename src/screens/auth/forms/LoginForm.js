@@ -1,17 +1,11 @@
-import React, { Component, useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
 import { CustomInput } from "../../../components/CustomInput";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../../../firebase-config";
-import { FirebaseError } from "firebase/app";
-import { async } from "@firebase/util";
 import { sendPasswordResetEmail } from "firebase/auth/react-native";
-import { AuthContext, UserAuth, AuthProvider } from "../../../contexts/AuthContext";
-import { Auth } from "firebase/auth/react-native";
-import HomeScreen from "../../home";
-import Loading from "../../Loading";
 
 
 export const LoginForm = (props) => {
@@ -38,7 +32,7 @@ export const LoginForm = (props) => {
       await signInWithEmailAndPassword(auth, email, password);
       console.log('set isloading to false');
       setIsLoading(false);
-      props.navigation.navigate('HomeScreen')
+      props.navigation.replace('HomeScreen')
 
     } catch (error) {
       console.log(error.code)
