@@ -9,6 +9,10 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {IMG_Logo, IMG_background} from '../../assets/images';
+import { AuthContext } from '../../contexts/AuthContext';
+import { signOut } from 'firebase/auth/react-native';
+import { auth } from '../../firebase-config';
+
 export class Onboarding extends Component {
   constructor(props) {
     super(props);
@@ -35,10 +39,11 @@ export class Onboarding extends Component {
         </ScrollView>
         <>{/* Button */}</>
         <TouchableOpacity
-          onPress={() => {
+          onPress={async () => {
             console.log(this.context)
             // this.context.logout();
             // console.log(this.context);
+            await signOut(auth);
             if (this.context.user) {
               this.props.navigation.navigate('HomeScreen')
             } else {
@@ -53,3 +58,5 @@ export class Onboarding extends Component {
   }
 }
 
+
+Onboarding.contextType = AuthContext;
