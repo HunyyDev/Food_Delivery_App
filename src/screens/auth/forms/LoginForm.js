@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useEffect, useState } from "react";
 import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
@@ -10,36 +10,36 @@ import { async } from "@firebase/util";
 import { sendPasswordResetEmail } from "firebase/auth/react-native";
 import { AuthContext, UserAuth, AuthProvider } from "../../../contexts/AuthContext";
 import { Auth } from "firebase/auth/react-native";
+import HomeScreen from "../../home";
+import Loading from "../../Loading";
 
 
+export const LoginForm = (props) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
 
-export class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
+  // handleEmailChange = (text) => {
+  //   this.setState({ email: text })
+  // }
 
-  handleEmailChange = (text) => {
-    this.setState({ email: text })
-  }
+  // handlePasswordChange = (text) => {
+  //   this.setState({ password: text })
+  // }
 
-  handlePasswordChange = (text) => {
-    this.setState({ password: text })
-  }
-
-  handleSubmitForm = async () => {
+  const handleSubmitForm = async () => {
     try {
-      if (this.state.email == '') {
+      if (email == '') {
         throw ({ code: 'empty-email' })
       }
-      else if (this.state.password == '') {
+      else if (password == '') {
         throw ({ code: 'empty-password' })
       }
-      await signInWithEmailAndPassword(auth, this.state.email, this.state.password);
-      this.props.navigation.navigate('HomeScreen')
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log('set isloading to false');
+      setIsLoading(false);
+      props.navigation.navigate('HomeScreen')
+
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
@@ -67,9 +67,9 @@ export class LoginForm extends Component {
     }
   }
 
-  handleForgetPasswordClick = async () => {
+  const handleForgetPasswordClick = async () => {
     try {
-      if (this.state.email == '') {
+      if (email == '') {
         throw ({ code: "empty-email" })
       }
       await sendPasswordResetEmail(
@@ -97,31 +97,44 @@ export class LoginForm extends Component {
           break;
       }
     }
-  }
+  };
 
-  render() {
-    return (
-      /* Here render the login input section */
-      <>
-        <ScrollView>
-          <View style={styles.lower}>
-            {/* Email address */}
-            <CustomInput label={'E-mail address'} placeHolder={'E-mail'} onChangeInput={this.handleEmailChange} />
-            <View style={{ height: scale(46) }} />
-            {/* Password */}
-            <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={this.handlePasswordChange} />
-            {/* Forget password link(still in progress) */}
-            <TouchableOpacity onPress={this.handleForgetPasswordClick} style={{ marginTop: scale(34), marginRight: 'auto' }}>
-              <Text style={styles.text}> {'Forget passcode?'}</Text>
-            </TouchableOpacity>
-          </View>
-          {/* Button */}
-          <TouchableOpacity onPress={this.handleSubmitForm} style={styles.button}>
-            <Text style={styles.buttonText}>{'Login'}</Text>
+  // useEffect(() => {
+  //   console.log('effect')
+  //   setEmail('');
+  //   setPassword('');
+  //   setIsLoading(true);
+  // }, [])
+
+  return (
+    /* Here render the login input section */
+    <>
+      <ScrollView>
+        <View style={styles.lower}>
+          {/* Email address */}
+          <CustomInput label={'E-mail address'} placeHolder={'E-mail'} onChangeInput={setEmail} />
+          <View style={{ height: scale(46) }} />
+          {/* Password */}
+          <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={setPassword} />
+          {/* Forget password link(still in progress) */}
+          <TouchableOpacity onPress={
+            () => {
+              handleForgetPasswordClick();
+            }}
+            style={{ marginTop: scale(34), marginRight: 'auto' }}>
+            <Text style={styles.text}> {'Forget passcode?'}</Text>
           </TouchableOpacity>
-        </ScrollView></>
-    );
-  }
+        </View>
+        {/* Button */}
+        <TouchableOpacity onPress={
+          () => {
+            handleSubmitForm();
+            props.navigation.navigate('Loading')
+          }}
+          style={styles.button}>
+          <Text style={styles.buttonText}>{'Login'}</Text>
+        </TouchableOpacity>
+      </ScrollView></>
+  );
 };
 
-LoginForm.contextType = AuthContext;

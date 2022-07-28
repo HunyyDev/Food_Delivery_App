@@ -11,3 +11,5 @@ export {default as IMG_Home} from './Home.png';
 export {default as IMG_History} from './History.png';
 export {default as IMG_Tym} from './Tym.png';
 export {default as IMG_user} from './user.png';
+export {default as IMG_ZT} from './02.jpg';
+export {default as IMG_LogoTitle} from './BellaOlonjelogo1112.png/';
