@@ -11,15 +11,6 @@ import { sendPasswordResetEmail } from "firebase/auth/react-native";
 export const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [isLoading, setIsLoading] = useState(true);
-
-  // handleEmailChange = (text) => {
-  //   this.setState({ email: text })
-  // }
-
-  // handlePasswordChange = (text) => {
-  //   this.setState({ password: text })
-  // }
 
   const handleSubmitForm = async () => {
     try {
@@ -30,8 +21,6 @@ export const LoginForm = (props) => {
         throw ({ code: 'empty-password' })
       }
       await signInWithEmailAndPassword(auth, email, password);
-      console.log('set isloading to false');
-      setIsLoading(false);
       props.navigation.replace('HomeScreen')
 
     } catch (error) {
