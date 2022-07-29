@@ -11,3 +11,7 @@ export {default as IMG_Home} from './Home.png';
 export {default as IMG_History} from './History.png';
 export {default as IMG_Tym} from './Tym.png';
 export {default as IMG_user} from './user.png';
+export {default as IMG_back} from './Back.png';
+export {default as IMG_historyTitle} from './historytitle.png';
+export {default as IMG_cartTitle} from './carttitle.png';
+export {default as IMG_noInternet} from './nointernet.png';
