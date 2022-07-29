@@ -1,47 +1,27 @@
-import React, { Component } from "react";
+import React, {  useState } from "react";
 import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
 import { CustomInput } from "../../../components/CustomInput";
 import { signInWithEmailAndPassword } from "@firebase/auth";
 import { auth } from "../../../firebase-config";
-import { FirebaseError } from "firebase/app";
-import { async } from "@firebase/util";
 import { sendPasswordResetEmail } from "firebase/auth/react-native";
-import { AuthContext, UserAuth, AuthProvider } from "../../../contexts/AuthContext";
-import { Auth } from "firebase/auth/react-native";
 
 
+export const LoginForm = (props) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-export class LoginForm extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      email: '',
-      password: '',
-    };
-  }
-
-  handleEmailChange = (text) => {
-    this.setState({ email: text })
-  }
-
-  handlePasswordChange = (text) => {
-    this.setState({ password: text })
-  }
-
-  handleSubmitForm = async () => {
+  const checkValidate = () => {
     try {
-      if (this.state.email == '') {
+      if (email == '') {
         throw ({ code: 'empty-email' })
       }
-      else if (this.state.password == '') {
+      else if (password == '') {
         throw ({ code: 'empty-password' })
       }
-      await signInWithEmailAndPassword(auth, this.state.email, this.state.password);
-      this.props.navigation.navigate('HomeScreen')
-    } catch (error) {
-      console.log(error.code)
+    }
+    catch (error) {
       switch (error.code) {
         case "empty-email":
           Alert.alert('Email can not be empty')
@@ -49,6 +29,22 @@ export class LoginForm extends Component {
         case "empty-password":
           Alert.alert('Password can not be empty')
           break;
+        default:
+          break;
+      }
+      return false;
+    }
+    return true;
+  }
+  const handleSubmitForm = async () => {
+    try {
+
+      await signInWithEmailAndPassword(auth, email, password);
+      props.navigation.replace('HomeScreen')
+
+    } catch (error) {
+      console.log(error.code)
+      switch (error.code) {
         case "auth/user-not-found":
           Alert.alert("Email does not exist, please sign in ")
           break;
@@ -64,26 +60,17 @@ export class LoginForm extends Component {
         default:
           break;
       }
+      props.navigation.goBack();
     }
   }
 
-  handleForgetPasswordClick = async () => {
-    try {
-      if (this.state.email == '') {
-        throw ({ code: "empty-email" })
-      }
-      await sendPasswordResetEmail(
-        auth,
-        this.state.email,
-        null
-      )
 
-      Alert.alert('Reset password email sent to ' + this.state.email, 'Please check your email')
+  const handleForgetPasswordClick = async () => {
+    try {
+      await sendPasswordResetEmail(auth, email)
+      Alert.alert('Reset password email sent to ' + email, 'Please check your email')
     } catch (error) {
       switch (error.code) {
-        case "empty-email":
-          Alert.alert('Please fill email address above');
-          break;
         case "auth/user-not-found":
           Alert.alert("Email does not exist")
           break;
@@ -97,31 +84,47 @@ export class LoginForm extends Component {
           break;
       }
     }
-  }
+    props.navigation.goBack();
+  };
 
-  render() {
-    return (
-      /* Here render the login input section */
-      <>
-        <ScrollView>
-          <View style={styles.lower}>
-            {/* Email address */}
-            <CustomInput label={'E-mail address'} placeHolder={'E-mail'} onChangeInput={this.handleEmailChange} />
-            <View style={{ height: scale(46) }} />
-            {/* Password */}
-            <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={this.handlePasswordChange} />
-            {/* Forget password link(still in progress) */}
-            <TouchableOpacity onPress={this.handleForgetPasswordClick} style={{ marginTop: scale(34), marginRight: 'auto' }}>
-              <Text style={styles.text}> {'Forget passcode?'}</Text>
-            </TouchableOpacity>
-          </View>
-          {/* Button */}
-          <TouchableOpacity onPress={this.handleSubmitForm} style={styles.button}>
-            <Text style={styles.buttonText}>{'Login'}</Text>
+
+  return (
+    /* Here render the login input section */
+    <>
+      <ScrollView>
+        <View style={styles.lower}>
+          {/* Email address */}
+          <CustomInput label={'E-mail address'} placeHolder={'E-mail'} onChangeInput={setEmail} />
+          <View style={{ height: scale(46) }} />
+          {/* Password */}
+          <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={setPassword} />
+          {/* Forget password link(still in progress) */}
+          <TouchableOpacity onPress={
+            () => {
+              if (email == '') {
+                Alert.alert('Please fill email address above');
+              }
+              else {
+                handleForgetPasswordClick();
+                props.navigation.navigate('Loading')
+              }
+            }}
+            style={{ marginTop: scale(34), marginRight: 'auto' }}>
+            <Text style={styles.text}> {'Forget passcode?'}</Text>
           </TouchableOpacity>
-        </ScrollView></>
-    );
-  }
+        </View>
+        {/* Button */}
+        <TouchableOpacity onPress={
+          () => {
+            if (checkValidate()) {
+              handleSubmitForm();
+              props.navigation.navigate('Loading')
+            }
+          }}
+          style={styles.button}>
+          <Text style={styles.buttonText}>{'Login'}</Text>
+        </TouchableOpacity>
+      </ScrollView></>
+  );
 };
 
-LoginForm.contextType = AuthContext;

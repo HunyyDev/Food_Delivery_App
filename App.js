@@ -11,8 +11,10 @@ import Orders from './src/screens/orders';
 const Stack = createNativeStackNavigator();
 
 const App = props => {
+  const { user } = useContext(AuthContext);
   return (
     <>
+      {console.log(user)}
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShow: false}}>
           <Stack.Screen name="Onboarding" options={{headerShown: false}}>
@@ -35,10 +37,17 @@ const App = props => {
             component={InProgress}
             option={{headerShow: false}}
           />
+          <Stack.Screen
+            name="Loading"
+            component={Loading}
+            option={{ headerShow: false }}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
   );
 };
+
+
 
 export default App;
