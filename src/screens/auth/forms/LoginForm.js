@@ -20,18 +20,8 @@ export const LoginForm = (props) => {
       else if (password == '') {
         throw ({ code: 'empty-password' })
       }
-<<<<<<< src/screens/auth/forms/LoginForm.js
     }
     catch (error) {
-=======
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log('set isloading to false');
-      setIsLoading(false);
-      props.navigation.replace('HomeScreen')
-
-    } catch (error) {
-      console.log(error.code)
->>>>>>> src/screens/auth/forms/LoginForm.js
       switch (error.code) {
         case "empty-email":
           Alert.alert('Email can not be empty')
