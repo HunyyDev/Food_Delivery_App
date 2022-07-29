@@ -51,6 +51,7 @@ class Orders extends Component {
             alignSelf: 'center',
             width: scale(240),
             textAlign: 'center',
+            color : CUSTOM_COLOR.Black,
           }}>
           {'Hit the orange button down below to Create an order'}
         </Text>
