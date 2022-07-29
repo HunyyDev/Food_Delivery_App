@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import styles from './styles';
 import {IMG_LogoTitle, IMG_ZT} from '../../assets/images';
+
 const Loading = () => {
   const Rotate = useRef(new Animated.Value(0)).current;
   useEffect(
