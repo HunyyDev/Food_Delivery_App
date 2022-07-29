@@ -5,9 +5,9 @@ import { IMG_LogoTitle, IMG_ZT } from "../../assets/images";
 const Loading = () => {
     const Rotate = useRef(new Animated.Value(0)).current
     useEffect(
-        Animated.loop(Animated.timing(Rotate, { toValue: 360, duration: 1500, useNativeDriver: true})).start,
-        [Rotate])
-        
+        Animated.loop(
+            Animated.timing(Rotate, { toValue: 360, duration: 1500, useNativeDriver: true })).start
+        , [Rotate])
     return (
         < SafeAreaView style={styles.container}>
             <ImageBackground source={IMG_ZT} resizeMode={'cover'} style={styles.backGround}>

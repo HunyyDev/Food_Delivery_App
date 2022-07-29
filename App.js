@@ -6,23 +6,45 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './src/screens/home';
 import { InProgress } from './src/screens/inProgress';
 import Loading from './src/screens/Loading';
+import { AuthContext } from './src/contexts/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
 const App = props => {
+  const { user } = useContext(AuthContext);
   return (
     <>
+      {console.log(user)}
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Onboarding">
+
+          {user ? (
+            <>
+              <Stack.Screen name="HomeScreen">
+                {props => <HomeScreen {...props} />}
+              </Stack.Screen>
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="Onboarding">
+                {props => <Onboarding {...props} />}
+              </Stack.Screen>
+            </>
+          )
+          }
+
+          {/* <Stack.Screen name="Onboarding">
             {props => <Onboarding {...props} />}
-          </Stack.Screen>
+          </Stack.Screen> */}
+
           <Stack.Screen name="Login">
             {props => <LoginScreen {...props} />}
           </Stack.Screen>
-          <Stack.Screen name="HomeScreen">
+
+          {/* <Stack.Screen name="HomeScreen">
             {props => <HomeScreen {...props} />}
-          </Stack.Screen>
+          </Stack.Screen> */}
+
           <Stack.Screen
             name="InProgress"
             component={InProgress}
@@ -38,5 +60,7 @@ const App = props => {
     </>
   );
 };
+
+
 
 export default App;

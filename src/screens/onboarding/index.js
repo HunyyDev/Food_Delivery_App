@@ -44,16 +44,12 @@ export class Onboarding extends Component {
         <TouchableOpacity
           onPress={async () => {
             await signOut(auth);
-            if (this.context.user) {
-              this.props.navigation.navigate('HomeScreen')
-            } else {
-              this.props.navigation.navigate('Login')
-            }
+            this.props.navigation.navigate('Login')
           }}
           style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{'Get started '}</Text>
         </TouchableOpacity>
-      </SafeAreaView>
+      </SafeAreaView >
     );
   }
 }
