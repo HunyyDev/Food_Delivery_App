@@ -21,7 +21,7 @@ export const LoginForm = (props) => {
         throw ({ code: 'empty-password' })
       }
       await signInWithEmailAndPassword(auth, email, password);
-      props.navigation.replace('HomeScreen')
+      props.navigation.replace('MyDrawer')
 
     } catch (error) {
       console.log(error.code)

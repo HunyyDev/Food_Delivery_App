@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 
 import styles from './styles';
-import {IMG_Logo, IMG_background} from '../../assets/images';
+import { IMG_Logo, IMG_background } from '../../assets/images';
 
 import { AuthContext } from '../../contexts/AuthContext';
 import { signOut } from 'firebase/auth/react-native';
@@ -43,21 +43,17 @@ export class Onboarding extends Component {
         <TouchableOpacity
           onPress={async () => {
 
-            console.log(this.context)
+            //console.log(this.context)
             // this.context.logout();
             // console.log(this.context);
 
             await signOut(auth);
-            if (this.context.user) {
-              this.props.navigation.navigate('HomeScreen')
-            } else {
-              this.props.navigation.navigate('Login')
-            }
+            this.props.navigation.navigate('Login')
           }}
           style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{'Get started '}</Text>
         </TouchableOpacity>
-      </SafeAreaView>
+      </SafeAreaView >
     );
   }
 }

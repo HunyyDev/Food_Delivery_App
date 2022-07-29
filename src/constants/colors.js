@@ -10,5 +10,6 @@ const CUSTOM_COLOR = {
   CornflowerBlue: '#6195ED',
   FrenchRose:'#EB4796',
   SilverChalice:'#9F9F9F',
+  Manatee:'#9A9A9D',
 };
 export default CUSTOM_COLOR;
