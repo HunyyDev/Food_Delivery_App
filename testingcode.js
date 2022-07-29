@@ -1,7 +1,7 @@
 
 
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Image, Text, View } from 'react-native';
 
 const Test = () => {
     const array = [];
@@ -18,7 +18,17 @@ const Test = () => {
 
     return (
         <View>
-            {getInfo(0)}
+            <Image
+                source={{
+                    uri: 'https://firebasestorage.googleapis.com/v0/b/food-for-everyone-e506f.appspot.com/o/FoodDeliveryApp%20img%2Fimage%202.png?alt=media&token=685124e6-e88b-47d2-bc23-0285311c5556',
+                    method: 'POST',
+                    headers: {
+                        Pragma: 'no-cache'
+                    },
+                    body: 'Your Body goes here'
+                }}
+                style={{ width: 400, height: 400 }}
+            />
         </View>
     )
 };

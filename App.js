@@ -11,7 +11,7 @@ import { AuthContext } from './src/contexts/AuthContext';
 const Stack = createNativeStackNavigator();
 
 const App = props => {
-  const { user } = useContext(AuthContext);
+  const user = useContext(AuthContext);
   return (
     <>
       {console.log(user)}
@@ -20,26 +20,32 @@ const App = props => {
 
           {user ? (
             <>
+              {console.log(user)}
               <Stack.Screen name="HomeScreen">
                 {props => <HomeScreen {...props} />}
               </Stack.Screen>
+
             </>
           ) : (
             <>
+              {console.log(user)}
               <Stack.Screen name="Onboarding">
                 {props => <Onboarding {...props} />}
               </Stack.Screen>
-            </>
-          )
-          }
+              <Stack.Screen name="Login">
+                {props => <LoginScreen {...props} />}
+              </Stack.Screen>
+              <Stack.Screen name="HomeScreen">
+                {props => <HomeScreen {...props} />}
+              </Stack.Screen>
+            </>)}
+
 
           {/* <Stack.Screen name="Onboarding">
             {props => <Onboarding {...props} />}
           </Stack.Screen> */}
 
-          <Stack.Screen name="Login">
-            {props => <LoginScreen {...props} />}
-          </Stack.Screen>
+
 
           {/* <Stack.Screen name="HomeScreen">
             {props => <HomeScreen {...props} />}
