@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     fontSize: scale(34),
   },
   titleContainer: {
-    width: scale(185),
+    width: scale(200),
     height: scale(93),
     top: scale(132),
     left: scale(50),
@@ -80,7 +80,7 @@ const styles = StyleSheet.create({
   optionText1: {
     alignSelf: 'center',
     opacity: 0.5,
-    color: CUSTOM_COLOR.White,
+    color: CUSTOM_COLOR.Black,
     fontFamily: CUSTOM_FONT.Bold,
     fontSize: scale(22),
   },
@@ -124,6 +124,23 @@ const styles = StyleSheet.create({
     height: scale(21.75),
     left: scale(160.55),
     bottom: scale(48),
+    position: 'absolute',
+  },
+  underline: {
+    backgroundColor: CUSTOM_COLOR.Vermilion,
+    width: '80%',
+    height: 3,
+    alignSelf: 'center',
+  },
+  seeMore: {
+    color: CUSTOM_COLOR.Vermilion,
+    fontFamily: CUSTOM_FONT.Bold,
+    fontSize: scale(15),
+    alignSelf:'center',
+  },
+  moreContainer: {
+    top: scale(-30),
+    left: scale(400),
     position: 'absolute',
   },
 });
