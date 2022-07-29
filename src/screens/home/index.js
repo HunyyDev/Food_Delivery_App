@@ -7,14 +7,12 @@ import {
   Text,
   TextInput,
   ScrollView,
-  TouchableOpacity,
 } from 'react-native';
 import {IMG_search, IMG_vector} from '../../assets/images';
 import {IMG_cart} from '../../assets/images';
 import {IMG_Scroll1, IMG_Scroll2} from '../../assets/images';
 import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../assets/images';
 import styles from './styles';
-import UnderlineButton from '../../components/UnderlineButton';
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -26,22 +24,14 @@ export default class HomeScreen extends Component {
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <></>
         {/* Logo1 */}
-        <TouchableOpacity
-          style={styles.vectorContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+        <View style={styles.vectorContainer}>
           <Image source={IMG_vector} />
-        </TouchableOpacity>
+        </View>
         <></>
         {/* Logo2 */}
-        <TouchableOpacity
-          style={styles.cartContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          onPress = {() => {
-            console.log(this.props);
-            this.props.navigation.navigate('Orders');
-          }}>
+        <View style={styles.cartContainer}>
           <Image source={IMG_cart} style={{opacity: 0.5}} />
-        </TouchableOpacity>
+        </View>
         <></>
         {/* Title */}
         <View style={styles.titleContainer}>
@@ -61,30 +51,15 @@ export default class HomeScreen extends Component {
         {/* Type of food */}
         <View style={styles.typeContainer}>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <UnderlineButton
-              style={styles.type}
-              underlineStyle={styles.underline}>
-              <Text>{'Foods'}</Text>
-            </UnderlineButton>
-            <UnderlineButton style={styles.type}>
-              <Text>{'Drinks'}</Text>
-            </UnderlineButton>
-            <UnderlineButton style={styles.type}>
-              <Text>{'Snacks'}</Text>
-            </UnderlineButton>
-            <UnderlineButton style={styles.type}>
-              <Text>{'Sauce'}</Text>
-            </UnderlineButton>
+            <Text style={styles.type}>{'Foods'}</Text>
+            <Text style={styles.type}>{'Drinks'}</Text>
+            <Text style={styles.type}>{'Snacks'}</Text>
+            <Text style={styles.type}>{'Sauce'}</Text>
           </ScrollView>
         </View>
         <></>
         {/* Big ScrollView */}
         <View style={styles.scrollContainer}>
-          <TouchableOpacity
-            style={styles.moreContainer}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-            <Text style={styles.seeMore}>{'see more'}</Text>
-          </TouchableOpacity>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <View style={styles.option}></View>
             <View style={styles.option}>
@@ -96,37 +71,25 @@ export default class HomeScreen extends Component {
             </View>
             <View style={styles.option}>
               <Image source={IMG_Scroll2} style={styles.imageOption} />
-              <Text style={styles.optionText1}>{'Spicy fish\n     sauce'}</Text>
-              <Text style={styles.optionText2}>{'N2,300.99'}</Text>
+              <Text style={styles.optionText1}>{'Veggie \ntomato mix'}</Text>
+              <Text style={styles.optionText2}>{'N1,900'}</Text>
             </View>
           </ScrollView>
         </View>
         <></>
         {/* Tools */}
-        <TouchableOpacity
-          style={styles.homeContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+        <View style={styles.homeContainer}>
           <Image source={IMG_Home} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.tymContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+        </View>
+        <View style={styles.tymContainer}>
           <Image source={IMG_Tym} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.userContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+        </View>
+        <View style={styles.userContainer}>
           <Image source={IMG_user} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.historyContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          onPress={() => {
-            console.log(this.props);
-            this.props.navigation.navigate('History');
-          }}>
+        </View>
+        <View style={styles.historyContainer}>
           <Image source={IMG_History} style={{opacity: 0.5}} />
-        </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   }
