@@ -18,15 +18,38 @@ const App = props => {
     <>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          <Stack.Screen name="Onboarding">
+
+          {user ? (
+            <>
+              <Stack.Screen name="HomeScreen">
+                {props => <HomeScreen {...props} />}
+              </Stack.Screen>
+
+            </>
+          ) : (
+            <>
+              <Stack.Screen name="Onboarding">
+                {props => <Onboarding {...props} />}
+              </Stack.Screen>
+              <Stack.Screen name="Login">
+                {props => <LoginScreen {...props} />}
+              </Stack.Screen>
+              <Stack.Screen name="HomeScreen">
+                {props => <HomeScreen {...props} />}
+              </Stack.Screen>
+            </>)}
+
+
+          {/* <Stack.Screen name="Onboarding">
             {props => <Onboarding {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="Login">
-            {props => <LoginScreen {...props} />}
-          </Stack.Screen>
-          <Stack.Screen name="HomeScreen">
+          </Stack.Screen> */}
+
+
+
+          {/* <Stack.Screen name="HomeScreen">
             {props => <HomeScreen {...props} />}
-          </Stack.Screen>
+          </Stack.Screen> */}
+
           <Stack.Screen
             name="InProgress"
             component={InProgress}
@@ -42,5 +65,7 @@ const App = props => {
     </>
   );
 };
+
+
 
 export default App;
