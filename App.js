@@ -16,7 +16,6 @@ const App = props => {
   const  user  = useContext(AuthContext);
   return (
     <>
-      {console.log(user)}
       <NavigationContainer>
         <Stack.Navigator screenOptions={{headerShown: false}}>
           <Stack.Screen name="Onboarding">
