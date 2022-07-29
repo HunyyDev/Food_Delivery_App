@@ -7,11 +7,13 @@ import HomeScreen from './src/screens/home';
 import {InProgress} from './src/screens/inProgress';
 import History from './src/screens/history';
 import Orders from './src/screens/orders';
+import Loading from './src/screens/Loading';
+import { AuthContext } from './src/contexts/AuthContext';
 
 const Stack = createNativeStackNavigator();
 
 const App = props => {
-  const { user } = useContext(AuthContext);
+  const  user  = useContext(AuthContext);
   return (
     <>
       {console.log(user)}

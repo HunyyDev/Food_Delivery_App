@@ -20,4 +20,4 @@ const Wrap = () =>
 }
 
 
-AppRegistry.registerComponent(appName, () => Test);
+AppRegistry.registerComponent(appName, () => Wrap);
