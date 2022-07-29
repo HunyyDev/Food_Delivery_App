@@ -47,13 +47,22 @@ export class Onboarding extends Component {
             // this.context.logout();
             // console.log(this.context);
 
+<<<<<<< HEAD
             //await signOut(auth);
             this.props.navigation.navigate('Login')
+=======
+            await signOut(auth);
+            if (this.context.user) {
+              this.props.navigation.navigate('HomeScreen')
+            } else {
+              this.props.navigation.navigate('Login')
+            }
+>>>>>>> d26f47ae8311b7f818622358fadb498d63f20367
           }}
           style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{'Get started '}</Text>
         </TouchableOpacity>
-      </SafeAreaView >
+      </SafeAreaView>
     );
   }
 }
