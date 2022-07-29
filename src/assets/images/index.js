@@ -17,3 +17,7 @@ export {default as IMG_Back} from './smallerVector.png';
 export {default as IMG_Profile} from './Rectangle6.png';
 export {default as IMG_Pencil} from './pencil.png';
 export {default as IMG_Card} from './card.png';
+export {default as IMG_back} from './Back.png';
+export {default as IMG_historyTitle} from './historytitle.png';
+export {default as IMG_cartTitle} from './carttitle.png';
+export {default as IMG_noInternet} from './nointernet.png';
