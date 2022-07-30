@@ -9,17 +9,20 @@ import {
   ScrollView,
   TouchableOpacity,
 } from 'react-native';
-import {IMG_search, IMG_vector} from '../../assets/images';
-import {IMG_cart} from '../../assets/images';
-import {IMG_Scroll1, IMG_Scroll2} from '../../assets/images';
-import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../assets/images';
+import {IMG_search, IMG_vector} from '../../../assets/images';
+import {IMG_cart} from '../../../assets/images';
+import {IMG_Scroll1, IMG_Scroll2} from '../../../assets/images';
+import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../../assets/images';
 import styles from './styles';
-import UnderlineButton from '../../components/UnderlineButton';
+import UnderlineButton from '../../../components/UnderlineButton';
+import CUSTOM_COLOR from '../../../constants/colors';
 
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      select: 'Foods',
+    };
   }
   render() {
     return (
@@ -28,7 +31,8 @@ export default class HomeScreen extends Component {
         {/* Logo1 */}
         <TouchableOpacity
           style={styles.vectorContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+          onPress={() => this.props.navigation.openDrawer()}>
           <Image source={IMG_vector} />
         </TouchableOpacity>
         <></>
@@ -36,7 +40,7 @@ export default class HomeScreen extends Component {
         <TouchableOpacity
           style={styles.cartContainer}
           hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          onPress = {() => {
+          onPress={() => {
             console.log(this.props);
             this.props.navigation.navigate('Orders');
           }}>
@@ -63,17 +67,95 @@ export default class HomeScreen extends Component {
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
             <UnderlineButton
               style={styles.type}
-              underlineStyle={styles.underline}>
-              <Text>{'Foods'}</Text>
+              underlineStyle={[
+                styles.underline,
+                {
+                  backgroundColor:
+                    this.state.select == 'Foods'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : 'transparent',
+                },
+              ]}
+              onPress={() => this.setState({select: 'Foods'})}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  color:
+                    this.state.select == 'Foods'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : CUSTOM_COLOR.Manatee,
+                }}>
+                {'Foods'}
+              </Text>
             </UnderlineButton>
-            <UnderlineButton style={styles.type}>
-              <Text>{'Drinks'}</Text>
+            <UnderlineButton
+              style={styles.type}
+              underlineStyle={[
+                styles.underline,
+                {
+                  backgroundColor:
+                    this.state.select == 'Drinks'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : 'transparent',
+                },
+              ]}
+              onPress={() => this.setState({select:'Drinks'})}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  color:
+                    this.state.select == 'Drinks'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : CUSTOM_COLOR.Manatee,
+                }}>
+                {'Drinks'}
+              </Text>
             </UnderlineButton>
-            <UnderlineButton style={styles.type}>
-              <Text>{'Snacks'}</Text>
+            <UnderlineButton
+              style={styles.type}
+              underlineStyle={[
+                styles.underline,
+                {
+                  backgroundColor:
+                    this.state.select == 'Snacks'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : 'transparent',
+                },
+              ]}
+              onPress={() => this.setState({select:'Snacks'})}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  color:
+                    this.state.select == 'Snacks'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : CUSTOM_COLOR.Manatee,
+                }}>
+                {'Snacks'}
+              </Text>
             </UnderlineButton>
-            <UnderlineButton style={styles.type}>
-              <Text>{'Sauce'}</Text>
+            <UnderlineButton
+              style={styles.type}
+              underlineStyle={[
+                styles.underline,
+                {
+                  backgroundColor:
+                    this.state.select == 'Sauce'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : 'transparent',
+                },
+              ]}
+              onPress={() => this.setState({select:'Sauce'})}>
+              <Text
+                style={{
+                  alignSelf: 'center',
+                  color:
+                    this.state.select == 'Sauce'
+                      ? CUSTOM_COLOR.SunsetOrange
+                      : CUSTOM_COLOR.Manatee,
+                }}>
+                {'Sauce'}
+              </Text>
             </UnderlineButton>
           </ScrollView>
         </View>
