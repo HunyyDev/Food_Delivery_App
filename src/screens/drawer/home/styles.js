@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
   },
   title: {
     color: CUSTOM_COLOR.Black,
-    fontFamily: CUSTOM_FONT.Bold,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(34),
   },
   titleContainer: {
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
 
   searchContainer: {
     width: scale(314),
-  height: scale(60),
+    height: scale(60),
     top: scale(242),
     left: scale(50),
     borderRadius: scale(30),
@@ -53,21 +53,24 @@ const styles = StyleSheet.create({
   searchInput: {
     top: scale(0),
     left: scale(50),
+    height: '100%',
+    width: '100%',
     opacity: 0.5,
     color: CUSTOM_COLOR.Black,
   },
 
   typeContainer: {
     top: scale(300),
+    height: scale(30),
   },
 
   type: {
     width: '100%',
-    fontFamily: CUSTOM_FONT.Bold,
-    height: scale(22),
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(17),
     marginRight: scale(91),
-    bottom: scale(8),
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
 
   scrollContainer: {
@@ -87,7 +90,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     opacity: 0.5,
     color: CUSTOM_COLOR.Black,
-    fontFamily: CUSTOM_FONT.Bold,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(22),
   },
 
@@ -95,7 +98,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     opacity: 0.5,
     color: CUSTOM_COLOR.Vermilion,
-    fontFamily: CUSTOM_FONT.Bold,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(17),
   },
 
@@ -110,7 +113,7 @@ const styles = StyleSheet.create({
   historyContainer: {
     width: scale(25.38),
     height: scale(21.75),
-    bottom: scale(51.62),
+    top: scale(821),
     left: scale(370),
     position: 'absolute',
   },
@@ -118,7 +121,7 @@ const styles = StyleSheet.create({
   homeContainer: {
     width: scale(25.38),
     height: scale(21.75),
-    bottom: scale(50.1),
+    top: scale(821),
     left: scale(53.12),
     position: 'absolute',
   },
@@ -126,7 +129,7 @@ const styles = StyleSheet.create({
   userContainer: {
     width: scale(25.38),
     height: scale(21.75),
-    bottom: scale(53),
+    top: scale(821),
     left: scale(260),
     position: 'absolute',
   },
@@ -135,7 +138,7 @@ const styles = StyleSheet.create({
     width: scale(25.38),
     height: scale(21.75),
     left: scale(160.55),
-    bottom: scale(48),
+    top: scale(821),
     position: 'absolute',
   },
 
@@ -148,9 +151,10 @@ const styles = StyleSheet.create({
 
   seeMore: {
     color: CUSTOM_COLOR.Vermilion,
-    fontFamily: CUSTOM_FONT.Bold,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(15),
     alignSelf: 'center',
+    right: scale(46),
   },
 
   moreContainer: {
