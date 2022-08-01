@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
 
   typeContainer: {
-    top: scale(300),
+    top: scale(280),
     height: scale(30),
   },
 
@@ -76,70 +76,58 @@ const styles = StyleSheet.create({
   scrollContainer: {
     backgroundColor: CUSTOM_COLOR.Whisper,
     top: scale(340),
+    height: scale(350),
   },
 
   option: {
+    top: scale(60),
     width: scale(220),
-    height: scale(350),
+    height: scale(280),
     backgroundColor: CUSTOM_COLOR.White,
-    marginRight: scale(29),
+    marginRight: scale(40),
     borderRadius: scale(30),
   },
 
   optionText1: {
+    marginTop: scale(-20),
     alignSelf: 'center',
     opacity: 0.5,
     color: CUSTOM_COLOR.Black,
     fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(22),
+    textAlign: 'center',
   },
 
   optionText2: {
+    marginTop: scale(10),
     alignSelf: 'center',
     opacity: 0.5,
     color: CUSTOM_COLOR.Vermilion,
     fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(17),
+    textAlign: 'center',
   },
 
   imageOption: {
-    width: scale(220),
-    height: scale(220),
-    top: scale(0),
+    width: scale(180),
+    height: scale(180),
+    top: scale(-40),
     left: scale(0),
     borderRadius: 220,
+    alignSelf: 'center',
   },
 
-  historyContainer: {
-    width: scale(25.38),
-    height: scale(21.75),
-    top: scale(821),
-    left: scale(370),
-    position: 'absolute',
+  buttonContainer: {
+    flex: 1, 
+    flexDirection: 'row', 
+    position: 'absolute', 
+    bottom: 20, 
+    justifyContent: 'space-evenly',
   },
-
-  homeContainer: {
-    width: scale(25.38),
-    height: scale(21.75),
-    top: scale(821),
-    left: scale(53.12),
-    position: 'absolute',
-  },
-
-  userContainer: {
-    width: scale(25.38),
-    height: scale(21.75),
-    top: scale(821),
-    left: scale(260),
-    position: 'absolute',
-  },
-
-  tymContainer: {
-    width: scale(25.38),
-    height: scale(21.75),
-    left: scale(160.55),
-    top: scale(821),
-    position: 'absolute',
+  button: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 
   underline: {
@@ -154,12 +142,11 @@ const styles = StyleSheet.create({
     fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(15),
     alignSelf: 'center',
-    right: scale(46),
   },
 
   moreContainer: {
-    top: scale(-30),
-    left: scale(400),
+    top: scale(-40),
+    right: scale(20),
     position: 'absolute',
   },
 });
