@@ -172,47 +172,49 @@ export default class HomeScreen extends Component {
             <Text style={styles.seeMore}>{'see more'}</Text>
           </TouchableOpacity>
           <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <View style={styles.option}></View>
-            <View style={styles.option}>
+            <TouchableOpacity style={styles.option}></TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
               <Image source={IMG_Scroll1} style={styles.imageOption} />
               <Text style={styles.optionText1}>
-                {'    Veggie \ntomato mix'}
+                {'Veggie \ntomato mix'}
               </Text>
               <Text style={styles.optionText2}>{'N1,900'}</Text>
-            </View>
-            <View style={styles.option}>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.option}>
               <Image source={IMG_Scroll2} style={styles.imageOption} />
-              <Text style={styles.optionText1}>{'Spicy fish\n     sauce'}</Text>
+              <Text style={styles.optionText1}>{'Spicy fish\nsauce'}</Text>
               <Text style={styles.optionText2}>{'N2,300.99'}</Text>
-            </View>
+            </TouchableOpacity>
           </ScrollView>
         </View>
         <></>
         {/* Tools */}
-        <TouchableOpacity
-          style={styles.homeContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Image source={IMG_Home} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.tymContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Image source={IMG_Tym} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.userContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
-          <Image source={IMG_user} />
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={styles.historyContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
-          onPress={() => {
-            console.log(this.props);
-            this.props.navigation.navigate('History');
-          }}>
-          <Image source={IMG_History} style={{opacity: 0.5}} />
-        </TouchableOpacity>
+        <View style = {styles.buttonContainer}>
+          <TouchableOpacity
+            style={styles.button}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            <Image source={IMG_Home} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            <Image source={IMG_Tym} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            <Image source={IMG_user} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.button}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => {
+              console.log(this.props);
+              this.props.navigation.navigate('History');
+            }}>
+            <Image source={IMG_History} style={{opacity: 0.5}} />
+          </TouchableOpacity>
+        </View>
       </SafeAreaView>
     );
   }
