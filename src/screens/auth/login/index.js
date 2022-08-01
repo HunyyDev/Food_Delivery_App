@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, SafeAreaView, Image, Text } from 'react-native';
 import SwitchButton from '../../../components/SwitchButton';
 import scale from '../../../constants/responsive';
-import { IMG_bella, IMG_vector1 } from '../../../assets/images';
+import { IMG_bella, IMG_Logo, IMG_vector1 } from '../../../assets/images';
 import Form from '../forms';
 import CUSTOM_COLOR from '../../../constants/colors';
 import UnderlineButton from '../../../components/UnderlineButton';
@@ -30,20 +30,13 @@ export default class LoginScreen extends Component {
         <View style={styles.upper}>
           {/*Logo*/}
           <View style={styles.logoContainer}>
-            <Image source={IMG_bella} style={styles.logo} />
-            <Image
-              source={IMG_vector1}
-              style={{
-                position: 'absolute',
-                marginLeft: scale(242),
-                marginTop: scale(164.81),
-              }}
-            />
+            <Image source={IMG_Logo} style={styles.logo} />
           </View>
           <SwitchButton
             containerStyle={{
-              width: '100%',
+              width: '90%',
               height: 100,
+              alignSelf: 'center',
               position: 'absolute',
               bottom: 0,
             }}

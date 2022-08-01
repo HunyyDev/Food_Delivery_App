@@ -7,6 +7,7 @@ const CUSTOM_FONT = {
   PoppinsMedium: 'Poppins-Medium',
   PoppinsRegular: 'Poppins-Regular',
   PoppinsSemiBold:'Poppins-SemiBold',
+  AbelRegular: 'abel-regular',
 };
 
 export default CUSTOM_FONT;

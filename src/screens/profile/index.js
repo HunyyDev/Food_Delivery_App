@@ -5,7 +5,7 @@ import {IMG_Back} from '../../assets/images';
 import Tag from './userTag';
 import Payment from './payment';
 
-const Profile = () => {
+const Profile = props => {
   const [user, setUser] = useState({
     name: 'Marvis Ighedosa',
     email: 'dosamarvis@gmail.com',
@@ -14,7 +14,7 @@ const Profile = () => {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress = {() => props.navigation.goBack()}>
           <Image source={IMG_Back} style={styles.backButton} />
         </TouchableOpacity>
         <Text style={styles.headerText}>{'My profile'}</Text>

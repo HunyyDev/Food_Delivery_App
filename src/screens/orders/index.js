@@ -18,9 +18,8 @@ class Orders extends Component {
         {/* back button */}
         <TouchableOpacity
           style={styles.backContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+          // hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
           onPress= {() => {
-            console.log(this.props);
             this.props.navigation.goBack();
           }}
           >
@@ -59,7 +58,7 @@ class Orders extends Component {
         {/* Button */}
         <TouchableOpacity style={styles.button}>
           <Text style={styles.buttonText}>
-            {'Start odering'}{' '}
+            {'Start ordering'}
           </Text>
         </TouchableOpacity>
       </SafeAreaView>

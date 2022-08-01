@@ -96,8 +96,8 @@ export const LoginForm = (props) => {
         <View style={styles.lower}>
           {/* Email address */}
           <CustomInput label={'E-mail address'} placeHolder={'E-mail'} onChangeInput={setEmail} />
-          <View style={{ height: scale(46) }} />
           {/* Password */}
+          <View style ={{height: scale(46)}}/>
           <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={setPassword} />
           {/* Forget password link(still in progress) */}
           <TouchableOpacity onPress={

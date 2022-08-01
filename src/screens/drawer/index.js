@@ -21,6 +21,7 @@ import {Image, TouchableOpacity, Text, View} from 'react-native';
 import scale from '../../constants/responsive';
 import CUSTOM_COLOR from '../../constants/colors';
 import Orders from '../orders';
+import Profile from '../profile';
 
 const Button = props => {
   return (
@@ -53,7 +54,9 @@ const MyDrawer = () => {
       <DrawerContentScrollView
         contentContainerStyle={{flex: 1, flexGrow: 1}}
         style={styles.container}>
-        <Image source={IMG_BigUser} style={styles.user}></Image>
+        <TouchableOpacity onPress ={() => props.navigation.jumpTo('Profile')}>
+          <Image source={IMG_BigUser} style={styles.user}></Image>
+        </TouchableOpacity>
         <View style={styles.buttonContainer}>
           <Button
             label="Home"
@@ -94,11 +97,12 @@ const MyDrawer = () => {
   return (
     <Drawer.Navigator
       initialRouteName="Home"
-      screenOptions={{headerShown: false, drawerStyle: {width: scale(259)}, swipeEdgeWidth: scale(50)}}
+      screenOptions={{headerShown: false, drawerStyle: {width: scale(259)}, swipeEdgeWidth: scale(40)}}
       drawerContent={CustomScrollDrawer}>
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="SignOut" component={SignOut} />
       <Drawer.Screen name="Orders" component={Orders} />
+      <Drawer.Screen name ="Profile" component={Profile} />
     </Drawer.Navigator>
   );
 };

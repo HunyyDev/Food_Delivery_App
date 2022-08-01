@@ -59,7 +59,7 @@ export default class HomeScreen extends Component {
             placeholder="Search"
             hitSlop={{top: '100%', bottom: '100%', left: '100%', right: '100%'}}
             placeholderTextColor={'black'}
-            style={styles.searchInput}></TextInput>
+            style={styles.searchInput}/>
         </View>
         <></>
         {/* Type of food */}
@@ -76,7 +76,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select: 'Foods'})}>
+              onPress={() => this.setState({select: 'Foods'})}
+              hitSlop = {this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -99,7 +100,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select:'Drinks'})}>
+              onPress={() => this.setState({select:'Drinks'})}
+              hitSlop = {this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -122,7 +124,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select:'Snacks'})}>
+              onPress={() => this.setState({select:'Snacks'})}
+              hitSlop = {this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -145,7 +148,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select:'Sauce'})}>
+              onPress={() => this.setState({select:'Sauce'})}
+              hitSlop = {this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',

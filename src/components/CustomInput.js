@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     height: 40,
     color: CUSTOM_COLOR.Black,
     borderBottomColor: CUSTOM_COLOR.Black,
-    borderBottomWidth: 1,
+    borderBottomWidth: 0.5,
     fontFamily: CUSTOM_FONT.ROUNDED,
   },
 

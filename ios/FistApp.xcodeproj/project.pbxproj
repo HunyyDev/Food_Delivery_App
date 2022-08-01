@@ -43,6 +43,8 @@
 		E3A2C3E20E02417CA323C4AF /* Poppins-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 670ADBE5AA8049ADBB4C284F /* Poppins-Medium.ttf */; };
 		A236B5E9D7CC4C11AEA8564F /* Poppins-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9C7CF6ECDD144FCB9E6FC9B3 /* Poppins-Regular.ttf */; };
 		1423E1DEEA0F454FB0B441C5 /* Poppins-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DF560C22E3FA444387E15EDB /* Poppins-SemiBold.ttf */; };
+		63042A20F5A44343A0FED34B /* abel-regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0DD0FDE762A24EDB898345C4 /* abel-regular.ttf */; };
+		44AF658165B74D68A370F0F7 /* SIL Open Font License.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4A639D3E513640CA847C71B1 /* SIL Open Font License.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -102,6 +104,8 @@
 		670ADBE5AA8049ADBB4C284F /* Poppins-Medium.ttf */ = {isa = PBXFileReference; name = "Poppins-Medium.ttf"; path = "../src/assets/fonts/Poppins-Medium.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		9C7CF6ECDD144FCB9E6FC9B3 /* Poppins-Regular.ttf */ = {isa = PBXFileReference; name = "Poppins-Regular.ttf"; path = "../src/assets/fonts/Poppins-Regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 		DF560C22E3FA444387E15EDB /* Poppins-SemiBold.ttf */ = {isa = PBXFileReference; name = "Poppins-SemiBold.ttf"; path = "../src/assets/fonts/Poppins-SemiBold.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		0DD0FDE762A24EDB898345C4 /* abel-regular.ttf */ = {isa = PBXFileReference; name = "abel-regular.ttf"; path = "../src/assets/fonts/abel-regular.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4A639D3E513640CA847C71B1 /* SIL Open Font License.txt */ = {isa = PBXFileReference; name = "SIL Open Font License.txt"; path = "../src/assets/fonts/SIL Open Font License.txt"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -239,6 +243,8 @@
 				670ADBE5AA8049ADBB4C284F /* Poppins-Medium.ttf */,
 				9C7CF6ECDD144FCB9E6FC9B3 /* Poppins-Regular.ttf */,
 				DF560C22E3FA444387E15EDB /* Poppins-SemiBold.ttf */,
+				0DD0FDE762A24EDB898345C4 /* abel-regular.ttf */,
+				4A639D3E513640CA847C71B1 /* SIL Open Font License.txt */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -369,6 +375,8 @@
 				E3A2C3E20E02417CA323C4AF /* Poppins-Medium.ttf in Resources */,
 				A236B5E9D7CC4C11AEA8564F /* Poppins-Regular.ttf in Resources */,
 				1423E1DEEA0F454FB0B441C5 /* Poppins-SemiBold.ttf in Resources */,
+				63042A20F5A44343A0FED34B /* abel-regular.ttf in Resources */,
+				44AF658165B74D68A370F0F7 /* SIL Open Font License.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
