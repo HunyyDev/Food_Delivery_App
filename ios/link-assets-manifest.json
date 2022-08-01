@@ -2,6 +2,10 @@
   "migIndex": 1,
   "data": [
     {
+      "path": "src/assets/fonts/abel-regular.ttf",
+      "sha1": "3ccc61028c66b2866400315e38301ce5df27e06a"
+    },
+    {
       "path": "src/assets/fonts/FontsFree-Net-SF-Pro-Rounded-Black.ttf",
       "sha1": "b116081850f9820eed953b981d88e8cca79fc97d"
     },
@@ -94,8 +98,32 @@
       "sha1": "21fdb007ec60c23df8ef1fbb586b397b2f1f099a"
     },
     {
+      "path": "src/assets/fonts/Poppins-Bold.ttf",
+      "sha1": "974b66074f1e265c0d203a4e2989c6120af3bc55"
+    },
+    {
+      "path": "src/assets/fonts/Poppins-Light.ttf",
+      "sha1": "107454fb84957d1ea4bd4c0335377df253eb2258"
+    },
+    {
+      "path": "src/assets/fonts/Poppins-Medium.ttf",
+      "sha1": "6575dbf38e9e61beec498e2be61c89d43399db24"
+    },
+    {
+      "path": "src/assets/fonts/Poppins-Regular.ttf",
+      "sha1": "dd48971530e3f19f7067ad80ce6c215365fe7269"
+    },
+    {
+      "path": "src/assets/fonts/Poppins-SemiBold.ttf",
+      "sha1": "33cccb49029917a6175e7e7a754e296d518c2710"
+    },
+    {
       "path": "src/assets/fonts/SF-Pro-Text-Bold.ttf",
       "sha1": "683902c971f8cf4619284dae418a13b217ff83e3"
+    },
+    {
+      "path": "src/assets/fonts/SIL Open Font License.txt",
+      "sha1": "04d8cb75b5e68432929d6121642e02787195e6a8"
     }
   ]
 }

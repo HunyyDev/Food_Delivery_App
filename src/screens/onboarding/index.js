@@ -47,13 +47,13 @@ export class Onboarding extends Component {
             // this.context.logout();
             // console.log(this.context);
 
-            //await signOut(auth);
+            await signOut(auth);
             this.props.navigation.navigate('Login')
           }}
           style={styles.buttonContainer}>
           <Text style={styles.buttonText}>{'Get started '}</Text>
         </TouchableOpacity>
-      </SafeAreaView>
+      </SafeAreaView >
     );
   }
 }

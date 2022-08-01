@@ -1,7 +1,7 @@
-import { StyleSheet } from "react-native";
-import CUSTOM_COLOR from "../../constants/colors";
-import CUSTOM_FONT from "../../constants/fonts";
-import scale from "../../constants/responsive";
+import {StyleSheet} from 'react-native';
+import CUSTOM_COLOR from '../../../constants/colors';
+import CUSTOM_FONT from '../../../constants/fonts';
+import scale from '../../../constants/responsive';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -23,16 +23,17 @@ const styles = StyleSheet.create({
   },
   title: {
     color: CUSTOM_COLOR.Black,
-    fontFamily: CUSTOM_FONT.Bold,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(34),
   },
   titleContainer: {
-    width: scale(185),
+    width: scale(200),
     height: scale(93),
     top: scale(132),
     left: scale(50),
     position: 'absolute',
   },
+
   searchContainer: {
     width: scale(314),
     height: scale(60),
@@ -48,28 +49,35 @@ const styles = StyleSheet.create({
     top: scale(21),
     left: scale(35),
   },
+
   searchInput: {
     top: scale(0),
     left: scale(50),
+    height: '100%',
+    width: '100%',
     opacity: 0.5,
     color: CUSTOM_COLOR.Black,
   },
+
   typeContainer: {
     top: scale(300),
+    height: scale(30),
   },
+
   type: {
-    top: scale(0),
-    left: scale(50),
-    opacity: 0.5,
-    color: CUSTOM_COLOR.Vermilion,
-    fontFamily: CUSTOM_FONT.Bold,
+    width: '100%',
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(17),
     marginRight: scale(91),
+    textAlignVertical: 'center',
+    textAlign: 'center',
   },
+
   scrollContainer: {
     backgroundColor: CUSTOM_COLOR.Whisper,
     top: scale(340),
   },
+
   option: {
     width: scale(220),
     height: scale(350),
@@ -77,20 +85,23 @@ const styles = StyleSheet.create({
     marginRight: scale(29),
     borderRadius: scale(30),
   },
+
   optionText1: {
     alignSelf: 'center',
     opacity: 0.5,
-    color: CUSTOM_COLOR.White,
-    fontFamily: CUSTOM_FONT.Bold,
+    color: CUSTOM_COLOR.Black,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(22),
   },
+
   optionText2: {
     alignSelf: 'center',
     opacity: 0.5,
     color: CUSTOM_COLOR.Vermilion,
-    fontFamily: CUSTOM_FONT.Bold,
+    fontFamily: CUSTOM_FONT.AbelRegular,
     fontSize: scale(17),
   },
+
   imageOption: {
     width: scale(220),
     height: scale(220),
@@ -98,33 +109,59 @@ const styles = StyleSheet.create({
     left: scale(0),
     borderRadius: 220,
   },
+
   historyContainer: {
     width: scale(25.38),
     height: scale(21.75),
-    bottom: scale(51.62),
+    top: scale(821),
     left: scale(370),
     position: 'absolute',
   },
+
   homeContainer: {
     width: scale(25.38),
     height: scale(21.75),
-    bottom: scale(50.1),
+    top: scale(821),
     left: scale(53.12),
     position: 'absolute',
   },
+
   userContainer: {
     width: scale(25.38),
     height: scale(21.75),
-    bottom: scale(53),
+    top: scale(821),
     left: scale(260),
     position: 'absolute',
   },
+
   tymContainer: {
     width: scale(25.38),
     height: scale(21.75),
     left: scale(160.55),
-    bottom: scale(48),
+    top: scale(821),
+    position: 'absolute',
+  },
+
+  underline: {
+    backgroundColor: CUSTOM_COLOR.Vermilion,
+    width: '80%',
+    height: 3,
+    alignSelf: 'center',
+  },
+
+  seeMore: {
+    color: CUSTOM_COLOR.Vermilion,
+    fontFamily: CUSTOM_FONT.AbelRegular,
+    fontSize: scale(15),
+    alignSelf: 'center',
+    right: scale(46),
+  },
+
+  moreContainer: {
+    top: scale(-30),
+    left: scale(400),
     position: 'absolute',
   },
 });
+
 export default styles;
