@@ -6,7 +6,7 @@ export {default as IMG_vector} from './Vector.png';
 export {default as IMG_cart} from './Cart.png';
 export {default as IMG_search} from './Search.png';
 export {default as IMG_Scroll1} from './image1.png';
-export {default as IMG_Scroll2} from './image2.png';
+export {default as IMG_Scroll2} from './image32x.png';
 export {default as IMG_Home} from './Home.png';
 export {default as IMG_History} from './History.png';
 export {default as IMG_Tym} from './Tym.png';

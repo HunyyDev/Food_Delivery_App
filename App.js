@@ -5,7 +5,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import {InProgress} from './src/screens/inProgress';
 import History from './src/screens/history';
 import Orders from './src/screens/orders';
-import Loading from './src/screens/loading';
+import Loading from './src/screens/Loading';
 import { AuthContext } from './src/contexts/AuthContext';
 import {createStackNavigator} from '@react-navigation/stack';
 import MyDrawer from './src/screens/drawer';
