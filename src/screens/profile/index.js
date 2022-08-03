@@ -1,15 +1,18 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {SafeAreaView, Image, View, Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
 import {IMG_Back} from '../../assets/images';
 import Tag from './userTag';
 import Payment from './payment';
+import { UserInfoContext } from '../../contexts/UserInfoContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const Profile = props => {
+  var userData = useContext(UserInfoContext)
   const [user, setUser] = useState({
-    name: 'Marvis Ighedosa',
-    email: 'dosamarvis@gmail.com',
-    description: 'No 15 uti street off ovie palace road effurun delta state',
+    name: userData.name,
+    email: userData.email,
+    description: userData.description,
   });
   return (
     <SafeAreaView style={styles.container}>
