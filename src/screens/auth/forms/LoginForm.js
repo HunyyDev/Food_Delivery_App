@@ -21,8 +21,7 @@ export const LoginForm = (props) => {
         throw ({ code: 'empty-password' })
       }
       await signInWithEmailAndPassword(auth, email, password);
-      props.navigation.replace('MyDrawer')
-
+      props.navigation.replace('MyDrawer');
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
@@ -47,7 +46,7 @@ export const LoginForm = (props) => {
         default:
           break;
       }
-
+      props.navigation.navigate("Login");
     }
   }
 

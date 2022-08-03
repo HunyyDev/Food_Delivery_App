@@ -11,7 +11,7 @@ export default class Form extends Component {
     return this.props.label == 'Login' ? (
       <LoginForm {...this.props.other} />
     ) : (
-      <SignUp {...this.props} />
+      <SignUp {...this.props.other} />
     );
   }
 };
