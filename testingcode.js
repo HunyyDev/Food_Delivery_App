@@ -1,36 +1,35 @@
 
 
-import React from 'react';
-import { Image, Text, View } from 'react-native';
+// import { signInWithEmailAndPassword } from 'firebase/auth/react-native';
+// import { doc, getDoc } from 'firebase/firestore';
+// import React, { useContext } from 'react';
+// import { Image, Text, View } from 'react-native';
+// import { db, auth } from './src/firebase-config';
+// import UserDataProvider, { UserDataContext } from './src/contexts/UserDataContext';
 
-const Test = () => {
-    const array = [];
-    array.push({ picture: 'food picture', name: 'food', price: '1900', detail: 'something' })
-    const getInfo = (index) => {
-        return (
-            <>
-                <Text>Name: {array[index].name}</Text>
-                <Text>Price: {array[index].price}</Text>
-                <Text>Detail: {array[index].detail}</Text>
-            </>
-        )
-    }
 
-    return (
-        <View>
-            <Image
-                source={{
-                    uri: 'https://firebasestorage.googleapis.com/v0/b/food-for-everyone-e506f.appspot.com/o/FoodDeliveryApp%20img%2Fimage%202.png?alt=media&token=685124e6-e88b-47d2-bc23-0285311c5556',
-                    method: 'POST',
-                    headers: {
-                        Pragma: 'no-cache'
-                    },
-                    body: 'Your Body goes here'
-                }}
-                style={{ width: 400, height: 400 }}
-            />
-        </View>
-    )
-};
+// //this is how to parsing data from a json file
+// export const data = require('./product-data.json');
 
-export default Test;
+// const something = doc(db, 'UserInfo/psb48TZPVuQuMLzPWrnb64MZya72')
+
+// async function readDoc() {
+//     const user = await signInWithEmailAndPassword(auth, '123456@gmail.com', '123456');
+//     console.log(user);
+//     const snapshot = await getDoc(something);
+//     if (snapshot.exists()) {
+//         const myData = snapshot.data();
+//         console.log(myData);
+//     }
+// }
+
+// const Test = () => {
+//     const obj = useContext(UserDataProvider);
+//     console.log(obj);
+
+//     return (
+//         <Text>aaa</Text>
+//     )
+// };
+
+// export default Test;

@@ -5,6 +5,7 @@ import { styles } from './styles';
 import { CustomInput } from '../../../components/CustomInput';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
 import { auth } from '../../../firebase-config';
+import { AuthContext } from '../../../contexts/AuthContext';
 export class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -30,6 +31,7 @@ export class SignUp extends Component {
   }
 
   handleSubmitForm = async () => {
+    console.log(this);
     try {
       if (this.state.email == '') {
         throw ({ code: 'empty-email' })
@@ -49,8 +51,8 @@ export class SignUp extends Component {
         this.state.email,
         this.state.password,
       )
-      Alert.alert('Sign up successfully')
-      this.props.setLabel("Login");
+      Alert.alert('Sign up successfully');
+      this.props.navigation.replace('MyDrawer');
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
@@ -118,3 +120,5 @@ export class SignUp extends Component {
     );
   }
 }
+
+SignUp.contextType = AuthContext;

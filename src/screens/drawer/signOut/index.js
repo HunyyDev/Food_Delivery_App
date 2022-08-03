@@ -1,13 +1,23 @@
+import { signOut } from 'firebase/auth/react-native';
 import React from 'react';
-import {SafeAreaView, Text, TouchableOpacity} from 'react-native';
+import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import CUSTOM_COLOR from '../../../constants/colors';
 import CUSTOM_FONT from '../../../constants/fonts';
 import scale from '../../../constants/responsive';
+import { auth } from '../../../firebase-config';
 
-const SignOut = () => {
+const SignOut = (props) => {
   return (
-    <SafeAreaView style={{flex: 1, justifyContent: 'center'}}>
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center' }}>
       <TouchableOpacity
+        onPress={async () => {
+          try {
+            await signOut(auth);
+          } catch (e) {
+            console.log(e)
+          }
+          props.navigation.navigate("Login");
+        }}
         style={{
           backgroundColor: CUSTOM_COLOR.SunsetOrange,
           justifyContent: 'center',

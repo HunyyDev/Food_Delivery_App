@@ -1,4 +1,4 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
@@ -21,8 +21,7 @@ export const LoginForm = (props) => {
         throw ({ code: 'empty-password' })
       }
       await signInWithEmailAndPassword(auth, email, password);
-      props.navigation.replace('MyDrawer')
-
+      props.navigation.replace('MyDrawer');
     } catch (error) {
       console.log(error.code)
       switch (error.code) {
@@ -47,6 +46,7 @@ export const LoginForm = (props) => {
         default:
           break;
       }
+      props.navigation.navigate("Login");
     }
   }
 
@@ -57,11 +57,11 @@ export const LoginForm = (props) => {
       }
       await sendPasswordResetEmail(
         auth,
-        this.state.email,
+        email,
         null
       )
 
-      Alert.alert('Reset password email sent to ' + this.state.email, 'Please check your email')
+      Alert.alert('Reset password email sent to ' + email, 'Please check your email')
     } catch (error) {
       switch (error.code) {
         case "empty-email":
@@ -79,16 +79,12 @@ export const LoginForm = (props) => {
         default:
           break;
       }
+      props.navigation.goBack();
+
     }
   };
 
-  // useEffect(() => {
-  //   console.log('effect')
-  //   setEmail('');
-  //   setPassword('');
-  //   setIsLoading(true);
-  // }, [])
-
+  
   return (
     /* Here render the login input section */
     <>
