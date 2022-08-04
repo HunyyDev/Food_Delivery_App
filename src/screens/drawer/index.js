@@ -21,8 +21,10 @@ import { Image, TouchableOpacity, Text, View } from 'react-native';
 import scale from '../../constants/responsive';
 import CUSTOM_COLOR from '../../constants/colors';
 import Orders from '../orders';
-import Profile from '../profile';
-
+import Profile from '../profile/profileChange';
+import UserProfile from '../profile';
+import Checkout from '../checkout';
+import Search from './home/search';
 const Button = props => {
   return (
     <TouchableOpacity
@@ -54,14 +56,12 @@ const MyDrawer = () => {
       <DrawerContentScrollView
         contentContainerStyle={{ flex: 1, flexGrow: 1 }}
         style={styles.container}>
-        <TouchableOpacity onPress={() => props.navigation.jumpTo('Profile')}>
-          <Image source={IMG_BigUser} style={styles.user}></Image>
-        </TouchableOpacity>
+        <Image source={IMG_BigUser} style={styles.user}></Image>
         <View style={styles.buttonContainer}>
           <Button
-            label="Home"
+            label="Profile"
             source={IMG_ProfileLogo}
-            component="Home"
+            component="Profile"
             navigation={props.navigation}
           />
           <Button
@@ -104,7 +104,10 @@ const MyDrawer = () => {
         {...props => <SignOut {...props} />}
       />
       <Drawer.Screen name="Orders" component={Orders} />
-      <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="Search" component={Search} />
+      <Drawer.Screen name="Profile" component={UserProfile} />
+      <Drawer.Screen name="ChangeProfile" component={Profile} />
+      <Drawer.Screen name ='Checkout' component={Checkout} />
     </Drawer.Navigator>
   );
 };
