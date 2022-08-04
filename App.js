@@ -22,7 +22,6 @@ const App = props => {
     <>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {console.log(user)}
           {((user == null) || (user == [])) ? (<>
             <Stack.Screen name="Onboarding">
               {props => <Onboarding {...props} />}
