@@ -23,6 +23,7 @@ import CUSTOM_COLOR from '../../constants/colors';
 import Orders from '../orders';
 import UserProfile from '../profile';
 import Profile from '../profile/profileChange';
+import Checkout from '../checkout';
 
 const Button = props => {
   return (
@@ -105,6 +106,7 @@ const MyDrawer = () => {
       <Drawer.Screen name="Orders" component={Orders} />
       <Drawer.Screen name="Profile" component={UserProfile} />
       <Drawer.Screen name="ChangeProfile" component={Profile} />
+      <Drawer.Screen name ='Checkout' component={Checkout} />
     </Drawer.Navigator>
   );
 };

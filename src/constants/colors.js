@@ -11,5 +11,6 @@ const CUSTOM_COLOR = {
   FrenchRose:'#EB4796',
   SilverChalice:'#9F9F9F',
   Manatee:'#9A9A9D',
+  Gallery: '#EDEDED',
 };
 export default CUSTOM_COLOR;
