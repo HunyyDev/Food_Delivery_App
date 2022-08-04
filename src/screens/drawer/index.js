@@ -55,13 +55,7 @@ const MyDrawer = () => {
       <DrawerContentScrollView
         contentContainerStyle={{ flex: 1, flexGrow: 1 }}
         style={styles.container}>
-<<<<<<< src/screens/drawer/index.js
         <Image source={IMG_BigUser} style={styles.user}></Image>
-=======
-        <TouchableOpacity onPress={() => props.navigation.jumpTo('Profile')}>
-          <Image source={IMG_BigUser} style={styles.user}></Image>
-        </TouchableOpacity>
->>>>>>> src/screens/drawer/index.js
         <View style={styles.buttonContainer}>
           <Button
             label="Profile"
@@ -109,12 +103,8 @@ const MyDrawer = () => {
         {...props => <SignOut {...props} />}
       />
       <Drawer.Screen name="Orders" component={Orders} />
-<<<<<<< src/screens/drawer/index.js
-      <Drawer.Screen name ="Profile" component={UserProfile} />
-      <Drawer.Screen name ='ChangeProfile' component = {Profile}/>
-=======
-      <Drawer.Screen name="Profile" component={Profile} />
->>>>>>> src/screens/drawer/index.js
+      <Drawer.Screen name="Profile" component={UserProfile} />
+      <Drawer.Screen name="ChangeProfile" component={Profile} />
     </Drawer.Navigator>
   );
 };
