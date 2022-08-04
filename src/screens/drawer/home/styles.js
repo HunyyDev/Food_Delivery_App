@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     width: scale(220),
     height: scale(280),
     backgroundColor: CUSTOM_COLOR.White,
-    marginRight: scale(40),
+    marginHorizontal: scale(20),
     borderRadius: scale(30),
   },
 
