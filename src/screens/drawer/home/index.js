@@ -8,6 +8,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import {IMG_search, IMG_vector} from '../../../assets/images';
 import {IMG_cart} from '../../../assets/images';
@@ -25,6 +26,39 @@ export default class HomeScreen extends Component {
     };
   }
   render() {
+    const data = [
+      {
+        id: 1,
+        name: 'Veggie \ntomato mix',
+        price: 'N1,900',
+        image: IMG_Scroll1,
+      },
+      {
+        id: 2,
+        name: 'Spicy fish\n sauce',
+        price: 'N2,300,99',
+        image: IMG_Scroll2,
+      },
+      {
+        id: 3,
+        name: 'Item 3',
+        price: '123',
+        image: IMG_Scroll1,
+      },
+      {
+        id: 4,
+        name: 'Item 4',
+        price: '456',
+        image: IMG_Scroll1,
+      },
+    ];
+    const Item = ({name, price, image}) => (
+      <TouchableOpacity style={styles.option}>
+        <Image source={image} style={styles.imageOption} />
+        <Text style={styles.optionText1}>{name}</Text>
+        <Text style={styles.optionText2}>{price}</Text>
+      </TouchableOpacity>
+    );
     return (
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <></>
@@ -55,11 +89,17 @@ export default class HomeScreen extends Component {
         {/* Search Box */}
         <View style={styles.searchContainer}>
           <Image source={IMG_search} style={styles.searchImage} />
-          <TextInput
-            placeholder="Search"
-            hitSlop={{top: '100%', bottom: '100%', left: '100%', right: '100%'}}
-            placeholderTextColor={'black'}
-            style={styles.searchInput}/>
+          <TouchableOpacity
+            style={styles.searchInput}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => {
+              console.log(this.props);
+              this.props.navigation.navigate('Search');
+            }}>
+            <Text style={{color: CUSTOM_COLOR.Black, opacity: 0.5}}>
+              Search{' '}
+            </Text>
+          </TouchableOpacity>
         </View>
         <></>
         {/* Type of food */}
@@ -77,7 +117,7 @@ export default class HomeScreen extends Component {
                 },
               ]}
               onPress={() => this.setState({select: 'Foods'})}
-              hitSlop = {this.props.hitSlop | undefined}>
+              hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -100,8 +140,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select:'Drinks'})}
-              hitSlop = {this.props.hitSlop | undefined}>
+              onPress={() => this.setState({select: 'Drinks'})}
+              hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -124,8 +164,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select:'Snacks'})}
-              hitSlop = {this.props.hitSlop | undefined}>
+              onPress={() => this.setState({select: 'Snacks'})}
+              hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -148,8 +188,8 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select:'Sauce'})}
-              hitSlop = {this.props.hitSlop | undefined}>
+              onPress={() => this.setState({select: 'Sauce'})}
+              hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
                   alignSelf: 'center',
@@ -171,25 +211,20 @@ export default class HomeScreen extends Component {
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
             <Text style={styles.seeMore}>{'see more'}</Text>
           </TouchableOpacity>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <TouchableOpacity style={styles.option}></TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
-              <Image source={IMG_Scroll1} style={styles.imageOption} />
-              <Text style={styles.optionText1}>
-                {'Veggie \ntomato mix'}
-              </Text>
-              <Text style={styles.optionText2}>{'N1,900'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
-              <Image source={IMG_Scroll2} style={styles.imageOption} />
-              <Text style={styles.optionText1}>{'Spicy fish\nsauce'}</Text>
-              <Text style={styles.optionText2}>{'N2,300.99'}</Text>
-            </TouchableOpacity>
-          </ScrollView>
+          <FlatList
+            style={{backgroundColor: CUSTOM_COLOR.WhiteSmoke}}
+            data={data}
+            renderItem={({item}) => (
+              <Item name={item.name} price={item.price} image={item.image} />
+            )}
+            keyExtractor={item => item.id}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+          />
         </View>
         <></>
         {/* Tools */}
-        <View style = {styles.buttonContainer}>
+        <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
@@ -197,7 +232,11 @@ export default class HomeScreen extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => {
+              console.log(this.props);
+              this.props.navigation.navigate('ProductDetail');
+            }}>
             <Image source={IMG_Tym} />
           </TouchableOpacity>
           <TouchableOpacity
