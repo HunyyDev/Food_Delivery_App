@@ -6,11 +6,9 @@ import { InProgress } from './src/screens/inProgress';
 import History from './src/screens/history';
 import Loading from './src/screens/Loading';
 import { AuthContext } from './src/contexts/AuthContext';
-import { createStackNavigator } from '@react-navigation/stack';
 import MyDrawer from './src/screens/drawer';
-import CustomScrollDrawer from './src/screens/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { CartContext } from './src/contexts/CartContext';
+import Checkout from './src/screens/checkout';
 
 const Stack = createNativeStackNavigator();
 

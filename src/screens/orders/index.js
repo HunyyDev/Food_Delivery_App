@@ -6,12 +6,7 @@ import scale from '../../constants/responsive';
 import CUSTOM_FONT from '../../constants/fonts';
 import CUSTOM_COLOR from '../../constants/colors';
 
-class Orders extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
+const Orders = props => {
     return (
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <></>
@@ -56,14 +51,13 @@ class Orders extends Component {
         </Text>
         <></>
         {/* Button */}
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity onPress={() => props.navigation.navigate('Checkout')} style={styles.button}>
           <Text style={styles.buttonText}>
             {'Start ordering'}
           </Text>
         </TouchableOpacity>
       </SafeAreaView>
     );
-  }
 }
 
 export default Orders;

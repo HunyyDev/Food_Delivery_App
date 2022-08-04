@@ -27,7 +27,7 @@ const UserProfile = props => {
           </TouchableOpacity>
         </View>
         <View style={styles.tagContainer}>
-          <Tag user={user} />
+          <Tag user={user}/>
         </View>
         <TouchableOpacity style={styles.button} onPress = {() => props.navigation.navigate('Orders')}>
           <Text style={styles.buttonText}>{'Orders'}</Text>
