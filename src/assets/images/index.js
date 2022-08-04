@@ -28,3 +28,4 @@ export {default as IMG_Shield} from './Shield.png';
 export {default as IMG_Tag} from './Tag.png';
 export {default as IMG_Paper} from './Paper.png';
 export {default as IMG_ToRightArrow} from './ToRight.png';
+export {default as IMG_Forward} from './forward.png';
