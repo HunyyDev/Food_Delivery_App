@@ -22,6 +22,7 @@ import scale from '../../constants/responsive';
 import CUSTOM_COLOR from '../../constants/colors';
 import Orders from '../orders';
 import Profile from '../profile';
+import Search from './home/search';
 
 const Button = props => {
   return (
@@ -105,6 +106,7 @@ const MyDrawer = () => {
       />
       <Drawer.Screen name="Orders" component={Orders} />
       <Drawer.Screen name="Profile" component={Profile} />
+      <Drawer.Screen name="Search" component={Search} />
     </Drawer.Navigator>
   );
 };

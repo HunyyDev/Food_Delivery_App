@@ -55,8 +55,8 @@ const styles = StyleSheet.create({
     left: scale(50),
     height: '100%',
     width: '100%',
-    opacity: 0.5,
     color: CUSTOM_COLOR.Black,
+    justifyContent: 'center',
   },
 
   typeContainer: {

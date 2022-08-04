@@ -8,6 +8,7 @@ import {
   TextInput,
   ScrollView,
   TouchableOpacity,
+  FlatList,
 } from 'react-native';
 import {IMG_search, IMG_vector} from '../../../assets/images';
 import {IMG_cart} from '../../../assets/images';
@@ -25,6 +26,35 @@ export default class HomeScreen extends Component {
     };
   }
   render() {
+    const data = [
+      {
+        id: 1,
+        name: "Veggie \ntomato mix",
+        price: "N1,900",
+      },
+      {
+        id: 2,
+        name: "Spicy fish\n sauce",
+        price: "N2,300,99",
+      },
+      {
+        id: 3,
+        name: "Item 3",
+        price: "123",
+      },
+      {
+        id: 4,
+        name: "Item 4",
+        price: "456",
+      },
+    ];
+    const Item = ({ name, price }) => (
+      <TouchableOpacity style={styles.option}>
+        <Image source={IMG_Scroll1} style={styles.imageOption} />
+        <Text style={styles.optionText1}>{name}</Text>
+        <Text style={styles.optionText2}>{price}</Text>
+      </TouchableOpacity>
+    );
     return (
       <SafeAreaView style={styles.container} edges={['top', 'bottom']}>
         <></>
@@ -55,11 +85,15 @@ export default class HomeScreen extends Component {
         {/* Search Box */}
         <View style={styles.searchContainer}>
           <Image source={IMG_search} style={styles.searchImage} />
-          <TextInput
-            placeholder="Search"
-            hitSlop={{top: '100%', bottom: '100%', left: '100%', right: '100%'}}
-            placeholderTextColor={'black'}
-            style={styles.searchInput}/>
+          <TouchableOpacity 
+            style={styles.searchInput}
+            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            onPress={() => {
+              console.log(this.props);
+              this.props.navigation.navigate('Search');
+            }}>
+            <Text style={{color: CUSTOM_COLOR.Black, opacity: 0.5}}>Search </Text>
+          </TouchableOpacity>
         </View>
         <></>
         {/* Type of food */}
@@ -171,21 +205,13 @@ export default class HomeScreen extends Component {
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
             <Text style={styles.seeMore}>{'see more'}</Text>
           </TouchableOpacity>
-          <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-            <TouchableOpacity style={styles.option}></TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
-              <Image source={IMG_Scroll1} style={styles.imageOption} />
-              <Text style={styles.optionText1}>
-                {'Veggie \ntomato mix'}
-              </Text>
-              <Text style={styles.optionText2}>{'N1,900'}</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={styles.option}>
-              <Image source={IMG_Scroll2} style={styles.imageOption} />
-              <Text style={styles.optionText1}>{'Spicy fish\nsauce'}</Text>
-              <Text style={styles.optionText2}>{'N2,300.99'}</Text>
-            </TouchableOpacity>
-          </ScrollView>
+          <FlatList style={{backgroundColor: CUSTOM_COLOR.WhiteSmoke}}
+            data = {data}
+            renderItem = {({ item}) => <Item name = {item.name} price = {item.price}/>}
+            keyExtractor= {item => item.id} 
+            horizontal
+            showsHorizontalScrollIndicator= {false}
+          />
         </View>
         <></>
         {/* Tools */}
