@@ -6,11 +6,11 @@ import { auth, db } from '../firebase-config';
 export const AuthContext = React.createContext();
 
 const AuthProvider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState({});
   const [userData, setUserData] = useState({});
 
   var dataSub;
-  
+
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, currUser => {
       if (dataSub && (!currUser || currUser.uid !== user.uid)) {
