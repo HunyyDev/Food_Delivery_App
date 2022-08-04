@@ -42,12 +42,6 @@ export class Onboarding extends Component {
         <>{/* Button */}</>
         <TouchableOpacity
           onPress={async () => {
-
-            //console.log(this.context)
-            // this.context.logout();
-            // console.log(this.context);
-
-            await signOut(auth);
             this.props.navigation.navigate('Login')
           }}
           style={styles.buttonContainer}>
