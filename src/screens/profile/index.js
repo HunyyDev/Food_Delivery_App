@@ -1,35 +1,17 @@
-<<<<<<< src/screens/profile/index.js
-import React from 'react';
-import {useState} from 'react';
-import {SafeAreaView, View, Image, TouchableOpacity, Text} from 'react-native';
-=======
 import React, {useContext, useState} from 'react';
 import {SafeAreaView, Image, View, Text, TouchableOpacity} from 'react-native';
->>>>>>> src/screens/profile/index.js
 import styles from './styles';
 import {IMG_Back, IMG_Forward} from '../../assets/images';
 import Tag from './userTag';
-<<<<<<< src/screens/profile/index.js
-import Profile from './profileChange';
+import { UserInfoContext } from '../../contexts/UserInfoContext';
 
 const UserProfile = props => {
-  const [user, setUser] = useState({
-    name: 'Marvis Ighedosa',
-    email: 'dosamarvis@gmail.com',
-    phoneNum: '+234 9011039271',
-    description: 'No 15 uti street off ovie palace road effurun delta state',
-=======
-import Payment from './payment';
-import { UserInfoContext } from '../../contexts/UserInfoContext';
-import { AuthContext } from '../../contexts/AuthContext';
-
-const Profile = props => {
   var userData = useContext(UserInfoContext)
   const [user, setUser] = useState({
     name: userData.name,
     email: userData.email,
+    phoneNum: '+234 9011039271',
     description: userData.description,
->>>>>>> src/screens/profile/index.js
   });
   return (
     <SafeAreaView style={styles.container}>
