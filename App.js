@@ -17,12 +17,11 @@ const Stack = createNativeStackNavigator();
 
 const App = props => {
   const user = useContext(AuthContext).user;
-
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {((user == null) || (user == [])) ? (<>
+          {(user == null || Object.keys(user).length === 0) ? (<>
             <Stack.Screen name="Onboarding">
               {props => <Onboarding {...props} />}
             </Stack.Screen>
