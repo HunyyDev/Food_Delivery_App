@@ -1,18 +1,15 @@
-import React, {useContext, useState} from 'react';
-import {SafeAreaView, Image, View, Text, TouchableOpacity} from 'react-native';
+import React, { useContext, useState } from 'react';
+import { SafeAreaView, Image, View, Text, TouchableOpacity } from 'react-native';
 import styles from './styles';
-import {IMG_Back, IMG_Forward} from '../../assets/images';
+import { IMG_Back, IMG_Forward } from '../../assets/images';
 import Tag from './userTag';
-import { UserInfoContext } from '../../contexts/UserInfoContext';
+import { AuthContext } from '../../contexts/AuthContext';
 
 const UserProfile = props => {
-  var userData = useContext(UserInfoContext)
-  const [user, setUser] = useState({
-    name: userData.name,
-    email: userData.email,
-    phoneNum: '+234 9011039271',
-    description: userData.description,
-  });
+  var userData = useContext(AuthContext).userData;
+  const [user, setUser] = useState(useContext(AuthContext).userData);
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.workSpace}>
@@ -22,14 +19,14 @@ const UserProfile = props => {
         <Text style={styles.headerText}>{'My profile'}</Text>
         <View style={styles.headerTab}>
           <Text style={styles.detailText}>{'Personal details'}</Text>
-          <TouchableOpacity onPress = {() => props.navigation.navigate('ChangeProfile')}>
+          <TouchableOpacity onPress={() => props.navigation.navigate('ChangeProfile')}>
             <Text style={styles.changeButton}>{'change'}</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.tagContainer}>
-          <Tag user={user}/>
+          <Tag user={user} />
         </View>
-        <TouchableOpacity style={styles.button} onPress = {() => props.navigation.navigate('Orders')}>
+        <TouchableOpacity style={styles.button} onPress={() => props.navigation.navigate('Orders')}>
           <Text style={styles.buttonText}>{'Orders'}</Text>
           <Image source={IMG_Forward} style={styles.buttonPic} />
         </TouchableOpacity>

@@ -8,16 +8,12 @@ import React from 'react';
 import { name as appName } from './app.json';
 import AuthProvider from './src/contexts/AuthContext';
 import CartProvider from './src/contexts/CartContext';
-import UserInfoProvider from './src/contexts/UserInfoContext';
-import Test from './testingcode';
 
 const Wrap = () => {
   return (
     <CartProvider>
       <AuthProvider>
-        <UserInfoProvider>
-          <App />
-        </UserInfoProvider>
+        <App />
       </AuthProvider>
     </CartProvider>
   );

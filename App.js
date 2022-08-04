@@ -8,18 +8,16 @@ import Loading from './src/screens/Loading';
 import { AuthContext } from './src/contexts/AuthContext';
 import MyDrawer from './src/screens/drawer';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import Checkout from './src/screens/checkout';
 
 const Stack = createNativeStackNavigator();
 
 const App = props => {
-  const user = useContext(AuthContext);
-
+  const user = useContext(AuthContext).user;
   return (
     <>
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
-          {((user == null) || (user == [])) ? (<>
+          {(user == null || Object.keys(user).length === 0) ? (<>
             <Stack.Screen name="Onboarding">
               {props => <Onboarding {...props} />}
             </Stack.Screen>

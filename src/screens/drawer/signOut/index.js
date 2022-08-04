@@ -16,7 +16,7 @@ const SignOut = (props) => {
           } catch (e) {
             console.log(e)
           }
-          props.navigation.navigate("Login");
+          props.navigation.replace("Login");
         }}
         style={{
           backgroundColor: CUSTOM_COLOR.SunsetOrange,
