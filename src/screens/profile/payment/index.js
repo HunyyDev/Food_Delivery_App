@@ -1,15 +1,20 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ChooseButton from '../../../components/ChooseButton';
-import {View} from 'react-native';
+import { View } from 'react-native';
 import styles from './styles';
-import {IMG_Card} from '../../../assets/images';
+import { IMG_Card } from '../../../assets/images';
 import CUSTOM_COLOR from '../../../constants/colors';
-const Payment = () => {
-  const [select, setSelect] = useState('Card');
+
+const Payment = (props) => {
+  const [select, setSelect] = useState(props.paymentMethod);
   return (
     <View style={styles.buttonContainer}>
       <ChooseButton
-        onPress = {() => setSelect('Card')}
+        onPress={() => {
+          setSelect('Card')
+          props.setPaymentMethod('Card')
+
+        }}
         style={styles.buttonStyle}
         shape={[
           styles.shape,
@@ -22,11 +27,11 @@ const Payment = () => {
         ]}
         inner={[
           styles.inner,
-          {backgroundColor: select == 'Card' ? CUSTOM_COLOR.SunsetOrange : 'transparent'},
+          { backgroundColor: select == 'Card' ? CUSTOM_COLOR.SunsetOrange : 'transparent' },
         ]}
         logoContainer={[
           styles.logoContainer,
-          {backgroundColor: CUSTOM_COLOR.TahitiGold},
+          { backgroundColor: CUSTOM_COLOR.TahitiGold },
         ]}
         source={IMG_Card}
         titleStyle={styles.title}
@@ -34,7 +39,10 @@ const Payment = () => {
       />
       <ChooseButton
         style={styles.buttonStyle}
-        onPress = {() => setSelect('Bank account')}
+        onPress={() => {
+          props.setPaymentMethod('Bank account')
+          setSelect('Bank account')
+        }}
         shape={[
           styles.shape,
           {
@@ -55,7 +63,7 @@ const Payment = () => {
         ]}
         logoContainer={[
           styles.logoContainer,
-          {backgroundColor: CUSTOM_COLOR.FrenchRose},
+          { backgroundColor: CUSTOM_COLOR.FrenchRose },
         ]}
         source={IMG_Card}
         titleStyle={styles.title}
@@ -63,7 +71,10 @@ const Payment = () => {
       />
       <ChooseButton
         style={styles.buttonStyle}
-        onPress = {() => setSelect('Paypal')}
+        onPress={() => {
+          props.setPaymentMethod('Paypal')
+          setSelect('Paypal')
+        }}
         shape={[
           styles.shape,
           {
@@ -82,7 +93,7 @@ const Payment = () => {
         ]}
         logoContainer={[
           styles.logoContainer,
-          {backgroundColor: CUSTOM_COLOR.CornflowerBlue},
+          { backgroundColor: CUSTOM_COLOR.CornflowerBlue },
         ]}
         source={IMG_Card}
         titleStyle={styles.title}

@@ -1,12 +1,13 @@
-import React, {useState} from 'react';
-import {View, Image, Text, TextInput} from 'react-native';
+import React, { useState } from 'react';
+import { View, Image, Text, TextInput } from 'react-native';
 import styles from './styles';
-import {IMG_Profile} from '../../../../assets/images';
+import { IMG_Profile } from '../../../../assets/images';
 import CUSTOM_FONT from '../../../../constants/fonts';
 import scale from '../../../../constants/responsive';
 import CUSTOM_COLOR from '../../../../constants/colors';
 const Tag = props => {
   const [user, setUser] = useState(props.user);
+
   return (
     <View style={styles.informationTag}>
       <View style={styles.imgContainer}>
@@ -14,32 +15,35 @@ const Tag = props => {
       </View>
       <View style={styles.tag}>
         <TextInput
-          onChangeText={text =>
+          onChangeText={text => {
             setUser({
+              ...user,
               name: text,
-              email: user.email,
-              description: user.description,
             })
+            props.onNameChange(text)
+          }
           }
           style={[
             styles.text,
             {
               fontFamily: CUSTOM_FONT.AbelRegular,
               lineHeight: scale(10),
-              flex:1,
+              flex: 1,
               top: scale(-5),
               paddingTop: 0,
               paddingBottom: 0,
             },
           ]}
-          value={user.name}/>
+          value={user.name} />
         <TextInput
-          onChangeText={text =>
+          onChangeText={text => {
             setUser({
-              name: user.name,
+              ...user,
               email: text,
-              description: user.description,
             })
+
+            props.onEmailChange(text)
+          }
           }
           style={[
             styles.text,
@@ -47,17 +51,22 @@ const Tag = props => {
               fontFamily: CUSTOM_FONT.AbelRegular,
               fontSize: scale(13),
               opacity: 0.8,
-              flex:1 ,
+              flex: 1,
               textAlignVertical: 'top',
               top: scale(-13),
               paddingTop: 0,
               paddingBottom: 0,
             },
           ]}
-          value={user.email}/>
+          value={user.email} />
         <TextInput
-          onChangeText={text =>
-            setUser({name: user.name, email: user.email, description: text})
+          onChangeText={text => {
+            setUser({
+              ...user,
+              description: text
+            })
+            props.onDesChange(text)
+          }
           }
           style={[
             styles.text,
@@ -66,7 +75,7 @@ const Tag = props => {
               fontFamily: CUSTOM_FONT.Regular,
               fontSize: scale(13),
               opacity: 0.5,
-              flex:1 ,
+              flex: 1,
               textAlignVertical: 'top',
               paddingTop: 0,
               paddingBottom: 0,

@@ -53,7 +53,7 @@ const Tag = props => {
                         height: scale(25),
                     },
                     ]}>
-                    {props.user.phoneNum}
+                    {props.user.phonePrefix} {props.user.phoneNum}
                 </Text>
                 <Text
                     style={[
