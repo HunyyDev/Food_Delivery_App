@@ -25,6 +25,7 @@ import Profile from '../profile/profileChange';
 import UserProfile from '../profile';
 import Checkout from '../checkout';
 import Search from './home/search';
+import ProductDetail from '../profile/productDetail';
 const Button = props => {
   return (
     <TouchableOpacity
@@ -98,7 +99,8 @@ const MyDrawer = () => {
     <Drawer.Navigator
       initialRouteName="Home"
       screenOptions={{ headerShown: false, drawerStyle: { width: scale(259) }, swipeEdgeWidth: scale(40) }}
-      drawerContent={CustomScrollDrawer}>
+      drawerContent={CustomScrollDrawer}
+      backBehavior='history'>
       <Drawer.Screen name="Home" component={HomeScreen} />
       <Drawer.Screen name="SignOut" component={SignOut}
         {...props => <SignOut {...props} />}
@@ -108,6 +110,7 @@ const MyDrawer = () => {
       <Drawer.Screen name="Profile" component={UserProfile} />
       <Drawer.Screen name="ChangeProfile" component={Profile} />
       <Drawer.Screen name ='Checkout' component={Checkout} />
+      <Drawer.Screen name = 'ProductDetail' component={ProductDetail}/>
     </Drawer.Navigator>
   );
 };

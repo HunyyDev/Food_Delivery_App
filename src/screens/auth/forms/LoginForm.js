@@ -103,6 +103,9 @@ export const LoginForm = (props) => {
             style={{ marginTop: scale(34), marginRight: 'auto' }}>
             <Text style={styles.text}> {'Forget passcode?'}</Text>
           </TouchableOpacity>
+          <TouchableOpacity style = {{marginRight: 'auto'}}>
+            <Text style={styles.text}> {'GG login'}</Text>
+          </TouchableOpacity>
         </View>
         {/* Button */}
         <TouchableOpacity onPress={
