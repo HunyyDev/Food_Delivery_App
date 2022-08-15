@@ -17,46 +17,30 @@ import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../../assets/images';
 import styles from './styles';
 import UnderlineButton from '../../../components/UnderlineButton';
 import CUSTOM_COLOR from '../../../constants/colors';
+import APIUtils from '../../../../utils/apiUtils';
+const Max = 50;
 
 export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
       select: 'Foods',
+      data: [],
     };
   }
+  componentDidMount = () =>{
+    APIUtils.get('/product').then(
+      response => this.setState({select: this.state.select, data: response.data})
+    )
+  }
   render() {
-    const data = [
-      {
-        id: 1,
-        name: 'Veggie \ntomato mix',
-        price: 'N1,900',
-        image: IMG_Scroll1,
-      },
-      {
-        id: 2,
-        name: 'Spicy fish\n sauce',
-        price: 'N2,300,99',
-        image: IMG_Scroll2,
-      },
-      {
-        id: 3,
-        name: 'Item 3',
-        price: '123',
-        image: IMG_Scroll1,
-      },
-      {
-        id: 4,
-        name: 'Item 4',
-        price: '456',
-        image: IMG_Scroll1,
-      },
-    ];
-    const Item = ({name, price, image}) => (
-      <TouchableOpacity style={styles.option}>
-        <Image source={image} style={styles.imageOption} />
-        <Text style={styles.optionText1}>{name}</Text>
-        <Text style={styles.optionText2}>{price}</Text>
+    const Item = props => (
+      <TouchableOpacity
+        style={styles.option}
+        onPress = {() => this.props.navigation.navigate('ProductDetail',{...props})}>
+        <Image source={{uri: props.Pic1}} style={styles.imageOption}/>
+        <Text style={styles.optionText1}>{props.name}</Text>
+        <Text style={styles.optionText2}>{props.price}</Text>
       </TouchableOpacity>
     );
     return (
@@ -213,9 +197,9 @@ export default class HomeScreen extends Component {
           </TouchableOpacity>
           <FlatList
             style={{backgroundColor: CUSTOM_COLOR.WhiteSmoke}}
-            data={data}
+            data={this.state.data}
             renderItem={({item}) => (
-              <Item name={item.name} price={item.price} image={item.image} />
+              <Item {...item}/>
             )}
             keyExtractor={item => item.id}
             horizontal
