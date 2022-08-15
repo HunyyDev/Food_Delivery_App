@@ -1,7 +1,8 @@
 import { onAuthStateChanged } from 'firebase/auth/react-native';
 import { doc, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
-import { auth, db } from '../firebase-config';
+import { db } from '../firebase-config';
+import auth from '@react-native-firebase/auth';
 
 export const AuthContext = React.createContext();
 
@@ -12,7 +13,9 @@ const AuthProvider = ({ children }) => {
   var dataSub;
 
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, currUser => {
+    const unsubscribe = auth().onAuthStateChanged(currUser => {
+      console.log('trigger listener')
+      console.log(currUser)
       if (dataSub && (!currUser || currUser.uid !== user.uid)) {
         dataSub();
       }
@@ -22,7 +25,7 @@ const AuthProvider = ({ children }) => {
           setUserData(doc.data());
         })
       }
-    });
+    }, []);
     return () => {
       unsubscribe();
       dataSub();

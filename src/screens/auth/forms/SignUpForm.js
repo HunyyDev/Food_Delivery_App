@@ -4,8 +4,9 @@ import scale from '../../../constants/responsive';
 import { styles } from './styles';
 import { CustomInput } from '../../../components/CustomInput';
 import { createUserWithEmailAndPassword } from '@firebase/auth';
-import { auth } from '../../../firebase-config';
 import { AuthContext } from '../../../contexts/AuthContext';
+import auth from '@react-native-firebase/auth';
+
 export class SignUp extends Component {
   constructor(props) {
     super(props);
@@ -46,11 +47,7 @@ export class SignUp extends Component {
         throw ({ code: 'password-diff' })
 
       }
-      const user = await createUserWithEmailAndPassword(
-        auth,
-        this.state.email,
-        this.state.password,
-      )
+      await auth().createUserWithEmailAndPassword(this.state.email, this.state.password)
       Alert.alert('Sign up successfully');
       this.props.navigation.replace('MyDrawer');
     } catch (error) {

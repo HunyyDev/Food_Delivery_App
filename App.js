@@ -16,7 +16,7 @@ const App = props => {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ headerShown: false }}>          
           {(user == null || Object.keys(user).length === 0) ? (<>
             <Stack.Screen name="Onboarding">
               {props => <Onboarding {...props} />}

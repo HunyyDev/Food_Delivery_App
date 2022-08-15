@@ -4,7 +4,7 @@ import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import CUSTOM_COLOR from '../../../constants/colors';
 import CUSTOM_FONT from '../../../constants/fonts';
 import scale from '../../../constants/responsive';
-import { auth } from '../../../firebase-config';
+import auth from '@react-native-firebase/auth'
 
 const SignOut = (props) => {
   return (
@@ -12,7 +12,7 @@ const SignOut = (props) => {
       <TouchableOpacity
         onPress={async () => {
           try {
-            await signOut(auth);
+            await auth().signOut();
           } catch (e) {
             console.log(e)
           }
