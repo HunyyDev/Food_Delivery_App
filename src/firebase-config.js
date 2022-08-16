@@ -6,7 +6,6 @@ import {
 } from 'firebase/auth/react-native';
 
 import { initializeFirestore } from "firebase/firestore";
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 // add firebase config here
 const firebaseConfig = {
@@ -30,10 +29,6 @@ const auth = initializeAuth(app, {
 // initialize database
 const db = initializeFirestore(app, {
   experimentalForceLongPolling: true,
-});
-
-GoogleSignin.configure({
-  webClientId: '869719383889-rdi0uidj7paukm39t7pe9vg0e1den71e.apps.googleusercontent.com',
 });
 
 export { db };

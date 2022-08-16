@@ -1,8 +1,8 @@
-import { onAuthStateChanged } from 'firebase/auth/react-native';
 import { doc, onSnapshot } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import { db } from '../firebase-config';
 import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 export const AuthContext = React.createContext();
 
@@ -13,9 +13,11 @@ const AuthProvider = ({ children }) => {
   var dataSub;
 
   useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '869719383889-rdi0uidj7paukm39t7pe9vg0e1den71e.apps.googleusercontent.com',
+    });
+
     const unsubscribe = auth().onAuthStateChanged(currUser => {
-      console.log('trigger listener')
-      console.log(currUser)
       if (dataSub && (!currUser || currUser.uid !== user.uid)) {
         dataSub();
       }
@@ -25,11 +27,13 @@ const AuthProvider = ({ children }) => {
           setUserData(doc.data());
         })
       }
-    }, []);
+    });
+
     return () => {
       unsubscribe();
       dataSub();
     };
+    
   }, []);
 
   return <AuthContext.Provider value={{ user, userData }}>{children}</AuthContext.Provider>;

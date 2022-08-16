@@ -3,26 +3,19 @@ import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
 import scale from "../../../constants/responsive";
 import { styles } from "./styles";
 import { CustomInput } from "../../../components/CustomInput";
-import { signInWithEmailAndPassword } from "@firebase/auth";
-import { sendPasswordResetEmail } from "firebase/auth/react-native";
 import auth from '@react-native-firebase/auth';
-
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
-
-
-
-
 
 export const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const onGoogleButtonPress = async () =>{
+  const onGoogleButtonPress = async () => {
     // Get the users ID token
     const { idToken } = await GoogleSignin.signIn();
 
     // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken);
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken,null);
 
     // Sign-in the user with the credential
     return auth().signInWithCredential(googleCredential);
@@ -112,8 +105,9 @@ export const LoginForm = (props) => {
           <TouchableOpacity
             style={{ marginRight: 'auto' }}
             onPress={() => {
-              onGoogleButtonPress();
-              props.navigation.replace('MyDrawer');
+              onGoogleButtonPress().then(() => {
+                props.navigation.replace('MyDrawer');
+              });
             }}>
             <Text style={styles.text}> {'GG login'}</Text>
           </TouchableOpacity>
