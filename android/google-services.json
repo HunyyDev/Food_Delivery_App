@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "869719383889",
+    "firebase_url": "https://food-for-everyone-e506f-default-rtdb.firebaseio.com",
+    "project_id": "food-for-everyone-e506f",
+    "storage_bucket": "food-for-everyone-e506f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:869719383889:android:6ac47decfae8f0bd2dfd70",
+        "android_client_info": {
+          "package_name": "com.fistapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "869719383889-q9j6hel8sfij4p1mtvrch4rpv9h38sbu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fistapp",
+            "certificate_hash": "b955aa4597000dabcad02b2e407a12dc0ea4c573"
+          }
+        },
+        {
+          "client_id": "869719383889-rdi0uidj7paukm39t7pe9vg0e1den71e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC_A1QkeLb_zFOmZcH7grBiAXmU3AG6OZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "869719383889-rdi0uidj7paukm39t7pe9vg0e1den71e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
