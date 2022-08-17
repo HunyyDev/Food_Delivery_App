@@ -5,8 +5,7 @@ import { IMG_Back } from '../../../assets/images';
 import Tag from './Tag';
 import Payment from '../payment';
 import { AuthContext } from '../../../contexts/AuthContext';
-import { doc, setDoc } from 'firebase/firestore';
-import { db } from '../../../firebase-config';
+import firestore from '@react-native-firebase/firestore';
 
 const Profile = props => {
   var userData = useContext(AuthContext).userData;
@@ -23,12 +22,14 @@ const Profile = props => {
 
   const handleUpdatePress = async () => {
     try {
-      await setDoc(doc(db, 'UserInfo/' + userUID,), { ...userData, ...temp, paymentMethod: tempPaymentMethod })
+      await firestore()
+        .collection('UserInfo')
+        .doc(userUID)
+        .set({ ...userData, ...temp, paymentMethod: tempPaymentMethod })
     } catch (error) {
       console.log(error)
     }
   }
-
 
   return (
     <SafeAreaView style={styles.container}>
