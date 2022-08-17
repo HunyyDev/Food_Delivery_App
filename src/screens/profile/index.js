@@ -9,7 +9,6 @@ const UserProfile = props => {
   var userData = useContext(AuthContext).userData;
   const [user, setUser] = useState(useContext(AuthContext).userData);
 
-
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.workSpace}>

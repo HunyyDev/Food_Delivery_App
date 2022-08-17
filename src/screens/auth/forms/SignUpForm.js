@@ -32,7 +32,7 @@ export class SignUp extends Component {
   }
 
   handleSubmitForm = async () => {
-    console.log(this);
+    //console.log(this);
     try {
       if (this.state.email == '') {
         throw ({ code: 'empty-email' })
