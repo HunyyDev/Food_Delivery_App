@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     height: HEIGHT * 0.32,
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: scale(20),
+    marginTop: scale(50),
   },
   imageFood: {
     width: WIDTH,
@@ -48,8 +48,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   food: {
-    borderRadius: scale(105),
     alignSelf: 'center',
+    width: '100%',
+    height: '100%',
+    backgroundColor: 'pink'
   },
   wrapDot: {
     alignItems: 'center',

@@ -28,7 +28,6 @@ const ProductDetail = props => {
   };
   const [dotActive, setDotActive] = useState(0);
   const onchange = nativeEvent => {
-    console.log(detail.Pic1)
     if (nativeEvent) {
       const slide = Math.round(
         nativeEvent.contentOffset.x / nativeEvent.layoutMeasurement.width,
@@ -59,8 +58,8 @@ const ProductDetail = props => {
           {data.map(item => (
             <View style={styles.imageFood}>
               <Image
-                key={item.id}
-                resizeMode="stretch"
+                key={item.index}
+                resizeMode="cover"
                 style={styles.food}
                 source={{uri: item.source}}
               />
@@ -85,10 +84,10 @@ const ProductDetail = props => {
       </View>
       <View>
         <View style={styles.backgroundName}>
-          <Text style={styles.textFoodContainer}>Veggie tomato mix</Text>
+          <Text style={styles.textFoodContainer}>{detail.name}</Text>
         </View>
         <View style={styles.backgroundPrice}>
-          <Text style={styles.textPriceContainer}>$1,900</Text>
+          <Text style={styles.textPriceContainer}>{'$'+detail.price}</Text>
         </View>
       </View>
       <View style={styles.backgroundInfo}>
