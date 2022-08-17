@@ -22,33 +22,35 @@ const AuthProvider = ({ children }) => {
         dataSub();
       }
       setUser(currUser);
-      console.log(currUser._user)
-      firestore()
-        .collection('UserInfo')
-        .doc(currUser._user.uid)
-        .get()
-        .then(doc => {
-          if (doc._data == undefined) {
-            firestore()
-              .collection('UserInfo')
-              .doc(currUser._user.uid)
-              .set({
-                description: "",
-                email: currUser._user.email,
-                name: currUser._user.displayName,
-                paymentMethod: "Card",
-                phoneNum: (currUser._user.phoneNum ? currUser._user.phoneNum : ''),
-                phonePrefix: '+84',
-                photoURL: currUser._user.photoURL
-              })
-          }
-        })
       if (currUser) {
+        firestore()
+          .collection('UserInfo')
+          .doc(currUser._user.uid)
+          .get()
+          .then(doc => {
+            if (doc._data == undefined) {
+              firestore()
+                .collection('UserInfo')
+                .doc(currUser._user.uid)
+                .set({
+                  description: "",
+                  email: currUser._user.email,
+                  name: currUser._user.displayName,
+                  paymentMethod: "Card",
+                  phoneNum: (currUser._user.phoneNum ? currUser._user.phoneNum : ''),
+                  phonePrefix: '+84',
+                  photoURL: currUser._user.photoURL
+                })
+            }
+          })
+
         attachTodataSub = true;
-        dataSub = firestore().collection('UserInfo').doc(currUser._user.uid).onSnapshot(doc => {
-          console.log(doc.data())
-          setUserData(doc.data())
-        })
+        dataSub = firestore()
+          .collection('UserInfo')
+          .doc(currUser._user.uid)
+          .onSnapshot(doc => {
+            setUserData(doc.data())
+          })
       }
     });
 
