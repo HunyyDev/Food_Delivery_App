@@ -6,7 +6,7 @@ import scale from '../../constants/responsive';
 import CUSTOM_FONT from '../../constants/fonts';
 import CUSTOM_COLOR from '../../constants/colors';
 
-class Orders extends Component {
+class noInternet extends Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -51,4 +51,4 @@ class Orders extends Component {
   }
 }
 
-export default Orders;
+export default noInternet;

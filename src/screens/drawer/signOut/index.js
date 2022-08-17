@@ -14,12 +14,12 @@ const SignOut = (props) => {
           try {
             await GoogleSignin.signOut();
             await auth().signOut();
-            props.navigation.replace("Login");
           }
           catch (error)
           {
             console.log(error);
           }
+          props.navigation.replace("Login");
         }}
         style={{
           backgroundColor: CUSTOM_COLOR.SunsetOrange,

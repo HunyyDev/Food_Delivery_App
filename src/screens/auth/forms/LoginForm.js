@@ -12,13 +12,18 @@ export const LoginForm = (props) => {
 
   const onGoogleButtonPress = async () => {
     // Get the users ID token
-    const { idToken } = await GoogleSignin.signIn();
+    try {
+      const { idToken } = await GoogleSignin.signIn();
 
-    // Create a Google credential with the token
-    const googleCredential = auth.GoogleAuthProvider.credential(idToken,null);
+      // Create a Google credential with the token
+      const googleCredential = auth.GoogleAuthProvider.credential(idToken, null);
 
-    // Sign-in the user with the credential
-    return auth().signInWithCredential(googleCredential);
+      // Sign-in the user with the credential
+      auth().signInWithCredential(googleCredential);
+      props.navigation.replace('MyDrawer');
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   const handleSubmitForm = async () => {
@@ -104,11 +109,7 @@ export const LoginForm = (props) => {
           </TouchableOpacity>
           <TouchableOpacity
             style={{ marginRight: 'auto' }}
-            onPress={() => {
-              onGoogleButtonPress().then(() => {
-                props.navigation.replace('MyDrawer');
-              });
-            }}>
+            onPress={onGoogleButtonPress}>
             <Text style={styles.text}> {'GG login'}</Text>
           </TouchableOpacity>
         </View>
