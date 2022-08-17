@@ -1,10 +1,10 @@
-import { signOut } from 'firebase/auth/react-native';
 import React from 'react';
 import { SafeAreaView, Text, TouchableOpacity } from 'react-native';
 import CUSTOM_COLOR from '../../../constants/colors';
 import CUSTOM_FONT from '../../../constants/fonts';
 import scale from '../../../constants/responsive';
-import { auth } from '../../../firebase-config';
+import auth from '@react-native-firebase/auth'
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
 const SignOut = (props) => {
   return (
@@ -12,11 +12,14 @@ const SignOut = (props) => {
       <TouchableOpacity
         onPress={async () => {
           try {
-            await signOut(auth);
-          } catch (e) {
-            console.log(e)
+            await GoogleSignin.signOut();
+            await auth().signOut();
+            props.navigation.replace("Login");
           }
-          props.navigation.replace("Login");
+          catch (error)
+          {
+            console.log(error);
+          }
         }}
         style={{
           backgroundColor: CUSTOM_COLOR.SunsetOrange,

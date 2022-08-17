@@ -30,7 +30,6 @@ const Search = props => {
       <Text style={styles.optionText2}>{'$' + price}</Text>
     </TouchableOpacity>
   );
-  useEffect()
   return (
     <>
       <Modal animationType="slide" transparent={true}>

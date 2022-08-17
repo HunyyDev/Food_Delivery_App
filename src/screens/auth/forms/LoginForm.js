@@ -1,15 +1,25 @@
-import React, {useState} from 'react';
-import {Text, View, TouchableOpacity, ScrollView, Alert} from 'react-native';
-import scale from '../../../constants/responsive';
-import {styles} from './styles';
-import {CustomInput} from '../../../components/CustomInput';
-import {signInWithEmailAndPassword} from '@firebase/auth';
-import {auth} from '../../../firebase-config';
-import {sendPasswordResetEmail} from 'firebase/auth/react-native';
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity, ScrollView, Alert } from 'react-native';
+import scale from "../../../constants/responsive";
+import { styles } from "./styles";
+import { CustomInput } from "../../../components/CustomInput";
+import auth from '@react-native-firebase/auth';
+import { GoogleSignin } from "@react-native-google-signin/google-signin";
 
-export const LoginForm = props => {
+export const LoginForm = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
+  const onGoogleButtonPress = async () => {
+    // Get the users ID token
+    const { idToken } = await GoogleSignin.signIn();
+
+    // Create a Google credential with the token
+    const googleCredential = auth.GoogleAuthProvider.credential(idToken,null);
+
+    // Sign-in the user with the credential
+    return auth().signInWithCredential(googleCredential);
+  }
 
   const handleSubmitForm = async () => {
     try {
@@ -18,9 +28,10 @@ export const LoginForm = props => {
       } else if (password == '') {
         throw {code: 'empty-password'};
       }
-      await signInWithEmailAndPassword(auth, email, password).then(
-        UserCredential => console.log(UserCredential),
-      );
+      else if (password == '') {
+        throw ({ code: 'empty-password' })
+      }
+      await auth().signInWithEmailAndPassword(email, password);
       props.navigation.replace('MyDrawer');
     } catch (error) {
       console.log(error.code);
@@ -55,12 +66,8 @@ export const LoginForm = props => {
       if (email == '') {
         throw {code: 'empty-email'};
       }
-      await sendPasswordResetEmail(auth, email, null);
-
-      Alert.alert(
-        'Reset password email sent to ' + email,
-        'Please check your email',
-      );
+      await auth().sendPasswordResetEmail(email)
+      Alert.alert('Reset password email sent to ' + email, 'Please check your email')
     } catch (error) {
       switch (error.code) {
         case 'empty-email':
@@ -78,7 +85,6 @@ export const LoginForm = props => {
         default:
           break;
       }
-      props.navigation.goBack();
     }
   };
 
@@ -94,22 +100,21 @@ export const LoginForm = props => {
             onChangeInput={setEmail}
           />
           {/* Password */}
-          <View style={{height: scale(46)}} />
-          <CustomInput
-            label={'Password'}
-            secureTextEntry={true}
-            placeHolder={'Password'}
-            onChangeInput={setPassword}
-          />
+          <View style={{ height: scale(46) }} />
+          <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={setPassword} />
           {/* Forget password link(still in progress) */}
           <TouchableOpacity
-            onPress={() => {
-              handleForgetPasswordClick();
-            }}
-            style={{marginTop: scale(34), marginRight: 'auto'}}>
+            onPress={handleForgetPasswordClick}
+            style={{ marginTop: scale(34), marginRight: 'auto' }}>
             <Text style={styles.text}> {'Forget passcode?'}</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={{marginRight: 'auto'}}>
+          <TouchableOpacity
+            style={{ marginRight: 'auto' }}
+            onPress={() => {
+              onGoogleButtonPress().then(() => {
+                props.navigation.replace('MyDrawer');
+              });
+            }}>
             <Text style={styles.text}> {'GG login'}</Text>
           </TouchableOpacity>
         </View>
