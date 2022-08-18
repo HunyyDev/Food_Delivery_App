@@ -12,13 +12,11 @@ import {
 } from 'react-native';
 import {IMG_search, IMG_vector} from '../../../assets/images';
 import {IMG_cart} from '../../../assets/images';
-import {IMG_Scroll1, IMG_Scroll2} from '../../../assets/images';
 import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../../assets/images';
 import styles from './styles';
 import UnderlineButton from '../../../components/UnderlineButton';
 import CUSTOM_COLOR from '../../../constants/colors';
 import APIUtils from '../../../../utils/apiUtils';
-const Max = 50;
 
 export default class HomeScreen extends Component {
   constructor(props) {
@@ -28,17 +26,21 @@ export default class HomeScreen extends Component {
       data: [],
     };
   }
-  componentDidMount = () =>{
-    APIUtils.get('/product').then(
-      response => this.setState({select: this.state.select, data: response.data})
-    )
-  }
+  componentDidMount = () => {
+    for (let index = 1; index < 5; index++) {
+      APIUtils.get('/product', {id: index}).then(response =>
+          this.setState({data: this.state.data.concat(response.data)})
+        );
+    }
+  };
   render() {
     const Item = props => (
       <TouchableOpacity
         style={styles.option}
-        onPress = {() => this.props.navigation.navigate('ProductDetail',{...props})}>
-        <Image source={{uri: props.Pic1}} style={styles.imageOption}/>
+        onPress={() =>
+          this.props.navigation.navigate('ProductDetail', {...props})
+        }>
+        <Image source={{uri: props.Pic1}} style={styles.imageOption} />
         <Text style={styles.optionText1}>{props.name}</Text>
         <Text style={styles.optionText2}>{props.price}</Text>
       </TouchableOpacity>
@@ -78,7 +80,7 @@ export default class HomeScreen extends Component {
             hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
             onPress={() => {
               console.log(this.props);
-              this.props.navigation.navigate('Search');
+              this.props.navigation.navigate('Search', {...this.state.data});
             }}>
             <Text style={{color: CUSTOM_COLOR.Black, opacity: 0.5}}>
               Search{' '}
@@ -198,9 +200,7 @@ export default class HomeScreen extends Component {
           <FlatList
             style={{backgroundColor: CUSTOM_COLOR.WhiteSmoke}}
             data={this.state.data}
-            renderItem={({item}) => (
-              <Item {...item}/>
-            )}
+            renderItem={({item}) => <Item {...item} />}
             keyExtractor={item => item.id}
             horizontal
             showsHorizontalScrollIndicator={false}

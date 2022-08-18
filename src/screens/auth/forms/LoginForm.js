@@ -29,7 +29,9 @@ export const LoginForm = (props) => {
   const handleSubmitForm = async () => {
     try {
       if (email == '') {
-        throw ({ code: 'empty-email' })
+        throw {code: 'empty-email'};
+      } else if (password == '') {
+        throw {code: 'empty-password'};
       }
       else if (password == '') {
         throw ({ code: 'empty-password' })
@@ -37,53 +39,53 @@ export const LoginForm = (props) => {
       await auth().signInWithEmailAndPassword(email, password);
       props.navigation.replace('MyDrawer');
     } catch (error) {
-      console.log(error.code)
+      console.log(error.code);
       switch (error.code) {
-        case "empty-email":
-          Alert.alert('Email can not be empty')
+        case 'empty-email':
+          Alert.alert('Email can not be empty');
           break;
-        case "empty-password":
-          Alert.alert('Password can not be empty')
+        case 'empty-password':
+          Alert.alert('Password can not be empty');
           break;
-        case "auth/user-not-found":
-          Alert.alert("Email does not exist, please sign in ")
+        case 'auth/user-not-found':
+          Alert.alert('Email does not exist, please sign in ');
           break;
-        case "auth/invalid-email":
-          Alert.alert("Invalid email")
+        case 'auth/invalid-email':
+          Alert.alert('Invalid email');
           break;
-        case "auth/wrong-password":
-          Alert.alert("wrong password")
+        case 'auth/wrong-password':
+          Alert.alert('wrong password');
           break;
-        case "auth/too-many-requests":
-          Alert.alert("Too many request, try again later")
+        case 'auth/too-many-requests':
+          Alert.alert('Too many request, try again later');
           break;
         default:
           break;
       }
-      props.navigation.navigate("Login");
+      props.navigation.navigate('Login');
     }
-  }
+  };
 
   const handleForgetPasswordClick = async () => {
     try {
       if (email == '') {
-        throw ({ code: "empty-email" })
+        throw {code: 'empty-email'};
       }
       await auth().sendPasswordResetEmail(email)
       Alert.alert('Reset password email sent to ' + email, 'Please check your email')
     } catch (error) {
       switch (error.code) {
-        case "empty-email":
+        case 'empty-email':
           Alert.alert('Please fill email address above');
           break;
-        case "auth/user-not-found":
-          Alert.alert("Email does not exist")
+        case 'auth/user-not-found':
+          Alert.alert('Email does not exist');
           break;
-        case "auth/invalid-email":
-          Alert.alert("Invalid email")
+        case 'auth/invalid-email':
+          Alert.alert('Invalid email');
           break;
-        case "auth/too-many-requests":
-          Alert.alert("Too many request, try again later")
+        case 'auth/too-many-requests':
+          Alert.alert('Too many request, try again later');
           break;
         default:
           break;
@@ -97,7 +99,11 @@ export const LoginForm = (props) => {
       <ScrollView>
         <View style={styles.lower}>
           {/* Email address */}
-          <CustomInput label={'E-mail address'} placeHolder={'E-mail'} onChangeInput={setEmail} />
+          <CustomInput
+            label={'E-mail address'}
+            placeHolder={'E-mail'}
+            onChangeInput={setEmail}
+          />
           {/* Password */}
           <View style={{ height: scale(46) }} />
           <CustomInput label={'Password'} secureTextEntry={true} placeHolder={'Password'} onChangeInput={setPassword} />
@@ -114,15 +120,15 @@ export const LoginForm = (props) => {
           </TouchableOpacity>
         </View>
         {/* Button */}
-        <TouchableOpacity onPress={
-          () => {
+        <TouchableOpacity
+          onPress={() => {
             handleSubmitForm();
-            props.navigation.navigate('Loading')
+            props.navigation.navigate('Loading');
           }}
           style={styles.button}>
           <Text style={styles.buttonText}>{'Login'}</Text>
         </TouchableOpacity>
-      </ScrollView></>
+      </ScrollView>
+    </>
   );
 };
-
