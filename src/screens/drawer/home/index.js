@@ -1,4 +1,4 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import React from 'react';
 import {
   SafeAreaView,
@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   FlatList,
 } from 'react-native';
-import {IMG_search, IMG_vector} from '../../../assets/images';
-import {IMG_cart} from '../../../assets/images';
-import {IMG_Tym, IMG_History, IMG_Home, IMG_user} from '../../../assets/images';
+import { IMG_search, IMG_vector } from '../../../assets/images';
+import { IMG_cart } from '../../../assets/images';
+import { IMG_Tym, IMG_History, IMG_Home, IMG_user } from '../../../assets/images';
 import styles from './styles';
 import UnderlineButton from '../../../components/UnderlineButton';
 import CUSTOM_COLOR from '../../../constants/colors';
@@ -28,9 +28,15 @@ export default class HomeScreen extends Component {
   }
   componentDidMount = () => {
     for (let index = 1; index < 5; index++) {
-      APIUtils.get('/product', {id: index}).then(response =>
-          this.setState({data: this.state.data.concat(response.data)})
-        );
+      APIUtils.get({ "id": String(index) })
+        .then(response =>
+          this.setState({ data: this.state.data.concat(response.data.document) })
+        )
+        .catch(error => console.log(error))
+
+      // APIUtils.get('/product', {id: index}).then(response =>
+      //     this.setState({data: this.state.data.concat(response.data)})
+      //   );
     }
   };
   render() {
@@ -38,9 +44,9 @@ export default class HomeScreen extends Component {
       <TouchableOpacity
         style={styles.option}
         onPress={() =>
-          this.props.navigation.navigate('ProductDetail', {...props})
+          this.props.navigation.navigate('ProductDetail', { ...props })
         }>
-        <Image source={{uri: props.Pic1}} style={styles.imageOption} />
+        <Image source={{ uri: props.Pic1 }} style={styles.imageOption} />
         <Text style={styles.optionText1}>{props.name}</Text>
         <Text style={styles.optionText2}>{props.price}</Text>
       </TouchableOpacity>
@@ -51,7 +57,7 @@ export default class HomeScreen extends Component {
         {/* Logo1 */}
         <TouchableOpacity
           style={styles.vectorContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           onPress={() => this.props.navigation.openDrawer()}>
           <Image source={IMG_vector} />
         </TouchableOpacity>
@@ -59,12 +65,12 @@ export default class HomeScreen extends Component {
         {/* Logo2 */}
         <TouchableOpacity
           style={styles.cartContainer}
-          hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
           onPress={() => {
             console.log(this.props);
             this.props.navigation.navigate('Orders');
           }}>
-          <Image source={IMG_cart} style={{opacity: 0.5}} />
+          <Image source={IMG_cart} style={{ opacity: 0.5 }} />
         </TouchableOpacity>
         <></>
         {/* Title */}
@@ -77,12 +83,12 @@ export default class HomeScreen extends Component {
           <Image source={IMG_search} style={styles.searchImage} />
           <TouchableOpacity
             style={styles.searchInput}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             onPress={() => {
               console.log(this.props);
-              this.props.navigation.navigate('Search', {...this.state.data});
+              this.props.navigation.navigate('Search', { ...this.state.data });
             }}>
-            <Text style={{color: CUSTOM_COLOR.Black, opacity: 0.5}}>
+            <Text style={{ color: CUSTOM_COLOR.Black, opacity: 0.5 }}>
               Search{' '}
             </Text>
           </TouchableOpacity>
@@ -102,7 +108,7 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select: 'Foods'})}
+              onPress={() => this.setState({ select: 'Foods' })}
               hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
@@ -126,7 +132,7 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select: 'Drinks'})}
+              onPress={() => this.setState({ select: 'Drinks' })}
               hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
@@ -150,7 +156,7 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select: 'Snacks'})}
+              onPress={() => this.setState({ select: 'Snacks' })}
               hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
@@ -174,7 +180,7 @@ export default class HomeScreen extends Component {
                       : 'transparent',
                 },
               ]}
-              onPress={() => this.setState({select: 'Sauce'})}
+              onPress={() => this.setState({ select: 'Sauce' })}
               hitSlop={this.props.hitSlop | undefined}>
               <Text
                 style={{
@@ -194,13 +200,13 @@ export default class HomeScreen extends Component {
         <View style={styles.scrollContainer}>
           <TouchableOpacity
             style={styles.moreContainer}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <Text style={styles.seeMore}>{'see more'}</Text>
           </TouchableOpacity>
           <FlatList
-            style={{backgroundColor: CUSTOM_COLOR.WhiteSmoke}}
+            style={{ backgroundColor: CUSTOM_COLOR.WhiteSmoke }}
             data={this.state.data}
-            renderItem={({item}) => <Item {...item} />}
+            renderItem={({ item }) => <Item {...item} />}
             keyExtractor={item => item.id}
             horizontal
             showsHorizontalScrollIndicator={false}
@@ -211,12 +217,12 @@ export default class HomeScreen extends Component {
         <View style={styles.buttonContainer}>
           <TouchableOpacity
             style={styles.button}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <Image source={IMG_Home} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             onPress={() => {
               console.log(this.props);
               this.props.navigation.navigate('ProductDetail');
@@ -225,17 +231,17 @@ export default class HomeScreen extends Component {
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}>
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}>
             <Image source={IMG_user} />
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.button}
-            hitSlop={{top: 10, bottom: 10, left: 10, right: 10}}
+            hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
             onPress={() => {
               console.log(this.props);
               this.props.navigation.navigate('History');
             }}>
-            <Image source={IMG_History} style={{opacity: 0.5}} />
+            <Image source={IMG_History} style={{ opacity: 0.5 }} />
           </TouchableOpacity>
         </View>
       </SafeAreaView>

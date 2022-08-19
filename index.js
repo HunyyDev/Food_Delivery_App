@@ -14,6 +14,7 @@ import NoInternet from './src/screens/NoInternet';
 
 const Wrap = () => {
   const [connection, setConnection] = useState();
+
   NetInfo.fetch().then(state => {
     setConnection(state.isConnected)
   })
@@ -21,8 +22,7 @@ const Wrap = () => {
   useEffect(() => {
     const unsubscribe = NetInfo.addEventListener(state => {
       setConnection(state.isConnected)
-    }
-    )
+    })
 
     return () => {
       unsubscribe();

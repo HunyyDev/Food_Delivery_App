@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
                   email: currUser._user.email,
                   name: currUser._user.displayName,
                   paymentMethod: "Card",
-                  phoneNum: (currUser._user.phoneNum ? currUser._user.phoneNum : ''),
+                  phoneNum: currUser._user.phoneNum ? currUser._user.phoneNum : '',
                   phonePrefix: '+84',
                   photoURL: currUser._user.photoURL
                 })

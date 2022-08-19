@@ -9,63 +9,63 @@ const Tag = props => {
     return(
         <View style={styles.informationTag}>
             <View style={styles.imgContainer}>
-                <Image source={IMG_Profile} resizeMode={'contain'} />
+                <Image source={{ uri: props.user.photoURL }} style={{ width: 100, height: 100, borderRadius: 20 }} />
             </View>
             <View style={styles.tag}>
                 <Text
                     style={[
-                    styles.text,
-                    {
-                        fontFamily: CUSTOM_FONT.AbelRegular,
-                        fontSize: scale(18),
-                        lineHeight: scale(21.48),
-                    },
+                        styles.text,
+                        {
+                            fontFamily: CUSTOM_FONT.AbelRegular,
+                            fontSize: scale(18),
+                            lineHeight: scale(21.48),
+                        },
                     ]}>
                     {props.user.name}
                 </Text>
                 <Text
                     style={[
-                    styles.text,
-                    {
-                        fontFamily: CUSTOM_FONT.AbelRegular,
-                        fontSize: scale(13),
-                        lineHeight: scale(15.51),
-                        opacity: 0.5,
-                        marginTop: scale(6),
-                        borderBottomColor: CUSTOM_COLOR.Black,
-                        borderBottomWidth: scale(0.5),
-                        height: scale(25),
-                    },
+                        styles.text,
+                        {
+                            fontFamily: CUSTOM_FONT.AbelRegular,
+                            fontSize: scale(13),
+                            lineHeight: scale(15.51),
+                            opacity: 0.5,
+                            marginTop: scale(6),
+                            borderBottomColor: CUSTOM_COLOR.Black,
+                            borderBottomWidth: scale(0.5),
+                            height: scale(25),
+                        },
                     ]}>
                     {props.user.email}
                 </Text>
                 <Text
                     style={[
-                    styles.text,
-                    {
-                        fontFamily: CUSTOM_FONT.AbelRegular,
-                        fontSize: scale(15),
-                        lineHeight: scale(21.48),
-                        opacity: 0.5,
-                        marginTop: scale(9),
-                        borderBottomColor: CUSTOM_COLOR.Black,
-                        borderBottomWidth: scale(0.5),
-                        height: scale(25),
-                    },
+                        styles.text,
+                        {
+                            fontFamily: CUSTOM_FONT.AbelRegular,
+                            fontSize: scale(15),
+                            lineHeight: scale(21.48),
+                            opacity: 0.5,
+                            marginTop: scale(9),
+                            borderBottomColor: CUSTOM_COLOR.Black,
+                            borderBottomWidth: scale(0.5),
+                            height: scale(25),
+                        },
                     ]}>
                     {props.user.phonePrefix} {props.user.phoneNum}
                 </Text>
                 <Text
                     style={[
-                    styles.text,
-                    {
-                        width: scale(191),
-                        fontFamily: CUSTOM_FONT.Regular,
-                        fontSize: scale(13),
-                        lineHeight: scale(15.51),
-                        opacity: 0.5,
-                        marginTop: scale(9),
-                    },
+                        styles.text,
+                        {
+                            width: scale(191),
+                            fontFamily: CUSTOM_FONT.Regular,
+                            fontSize: scale(13),
+                            lineHeight: scale(15.51),
+                            opacity: 0.5,
+                            marginTop: scale(9),
+                        },
                     ]}>
                     {props.user.description}
                 </Text>
