@@ -1,9 +1,11 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import axios from 'axios';
 import getRedirect from './redirectLink';
 
-axios.defaults.baseURL = 'https://62f25ea8b1098f1508115e62.mockapi.io/';
-``;
+axios.defaults.baseURL = 'https://data.mongodb-api.com/app/data-lllra/endpoint/data/v1';
+
+var APIkey = 'a89aCJTR7RsVPgkVGfeL7YM0n9cGYP2v05t9T5QBrboifqxoqszUSJbfVSGm9v9d'
+
 const GetData = async response => {
   if (response.data.length == undefined) {
     await getRedirect(response.data.Pic1).then(
@@ -34,42 +36,33 @@ const GetData = async response => {
   }
   return response;
 };
+
 export default class APIUtils extends Component {
-  static get(url, params, headers) {
-    console.log('clicked');
-    if (params == undefined)
-      params = {
-        id: '',
-      };
-    else if (params.id == undefined) params.id = '';
+  static get(params, headers, uri = 'action/findOne') {
     return new Promise((resolve, reject) =>
-      axios
-        .get(url + '/' + params.id, {
-          headers: {
-            'Content-Type': 'application/json',
-            ...headers,
-          },
+      axios({
+        method: 'post',
+        url: uri,
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Request-Headers': '*',
+          'api-key': APIkey,
+          ...headers
+        },
+        data: {
+          "collection": "products",
+          "database": "Food_Delivery_App",
+          "dataSource": "Cluster0",
+          "filter": params
+        }
+      })
+        .then(res => {
+          console.log(res)
+          resolve(res)
         })
-        .then(response => {
-          GetData(response).then(response => resolve(response));
+        .catch(err => {
+          reject(err)
         })
-        .catch(err => reject(err)),
-    );
-  }
-  static find(url, params, headers) {
-    console.log(url);
-    return new Promise((resolve, reject) =>
-      axios
-        .get(url, {
-          headers: {
-            'Content-Type': 'application/json',
-            ...headers,
-          },
-        })
-        .then(response => {
-          GetData(response).then(response => resolve(response));
-        })
-        .catch(err => reject(err)),
     );
   }
 }
